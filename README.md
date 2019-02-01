@@ -3,7 +3,7 @@ Website - elsass TV - the best ever
 
 ________________________________________________________________________________________________________________________________________________________________________________________________
 
-    							PROJECTS MEMBERS 
+    					PROJECTS MEMBERS 
 
 						Hugo Martinet: Product Owner
 						Jérémy Rich: Lead Dev
