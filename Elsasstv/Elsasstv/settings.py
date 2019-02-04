@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,17 +76,17 @@ WSGI_APPLICATION = 'Elsasstv.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+with open('Elsasstv/SECRET_DB.txt') as f:
+    db_password = f.read().strip()
+DATABASES = {'default': {
+							'ENGINE': 'django.db.backends.mysql',
+							'NAME': 'Elsasstv',
+							'USER': 'root',
+							'PASSWORD' : db_password,
+							'HOST' : 'localhost',
+							'PORT': '3306',
+			}}
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Elsasstv',
-		'USER': 'root',
-		'PASSWORD' : 'maman246',
-		'HOST' : 'localhost',
-		'PORT': '3306',
-    }
-}
 
 
 # Password validation
