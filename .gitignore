@@ -56,6 +56,7 @@ coverage.xml
 local_settings.py
 db.sqlite3
 SECRET_KEY.txt
+SECRET_DB.txt
 
 # Flask stuff:
 instance/
