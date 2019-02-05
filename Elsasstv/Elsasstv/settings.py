@@ -28,7 +28,7 @@ with open('Elsasstv/SECRET_KEY.txt') as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['107.191.62.201']
+ALLOWED_HOSTS = ['107.191.62.201', 'localhost']
 
 
 # Application definition
