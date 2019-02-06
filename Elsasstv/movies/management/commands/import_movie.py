@@ -34,9 +34,8 @@ class Command(BaseCommand):
                 vote_count = data['vote_count'],
             )
             if created:
-                movie.save()
-                display_format = "\nMovie, {}, has been saved."
-                print(display_format.format(movie))
+                movie.save()                
+                
         except Exception as ex:
             with open('errors_movies.txt', 'a') as errors:
                 errors.write(str(ex))
@@ -64,10 +63,9 @@ class Command(BaseCommand):
 
 test  = Command()
 list_id = test.getIDs()
-for i in range(2500):
+for i in range(len(list_id)):
     test.handle(list_id[i])
-    if i % 40 == 0 :
-        time.sleep(1)
+   
     
 
 
