@@ -29,16 +29,12 @@ class Command(BaseCommand):
             )
             if created:
                 person.save()
-                display_format = "\nPerson, {}, has been saved."
-                print(display_format.format(person))
+                
         except Exception as ex:
-            with open('errors_persons.txt', 'a') as errors:
-                sys.stdout = errors
-                print(str(ex))
-                msg = "\n\nSomething went wrong saving this person: {}, id:{} \n{}".format(data['name'], data['id'], str(ex))
-                print(msg)
-                sys.stdout = sys.__stdout__
-
+            with open('errors_persons.txt', 'a') as errors:                
+                errors.write(str(ex))
+                errors.write("\n\nSomething went wrong saving this person: {}, id:{} \n{}".format(data['name'], data['id'], str(ex)))
+               
     def getIDs(self):
         list_id = []
         with open('person_ids_02_04_2019.json', 'r') as json_data:
@@ -61,10 +57,8 @@ class Command(BaseCommand):
 
 test  = Command()
 list_id = test.getIDs()
-for i in range(200):
+for i in range(len(list_id)):
     test.handle(list_id[i])
-    if i % 40 == 0 :
-        time.sleep(1)
     
 
 

@@ -3,12 +3,12 @@ from django.db import models
 class Movie(models.Model):
 
     id = models.IntegerField(primary_key=True)
-    imdb_id = models.CharField(max_length=45)
+    imdb_id = models.CharField(max_length=45, null=True)
     original_title = models.CharField(max_length=200)
     title = models.CharField(max_length=200)  
     tagline = models.TextField()  
     overview = models.TextField()
-    release_date = models.DateTimeField(null=True)
+    release_date = models.CharField(max_length=200, null=True)
     status = models.CharField(max_length=45)
     runtime = models.IntegerField(null=True)
     popularity = models.FloatField(null=True)
