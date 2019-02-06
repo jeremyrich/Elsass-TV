@@ -39,12 +39,9 @@ class Command(BaseCommand):
                 print(display_format.format(movie))
         except Exception as ex:
             with open('errors_movies.txt', 'a') as errors:
-                sys.stdout = errors
-                print(str(ex))
-                msg = "\n\nSomething went wrong saving this movie: {}, id:{} \n{}".format(data['title'], data['id'], str(ex))
-                print(msg)
-                sys.stdout = sys.__stdout__
-
+                errors.write(str(ex))
+                errors.write("\n\nSomething went wrong saving this movie: {}, id:{} \n{}".format(data['title'], data['id'], str(ex)))
+                
     def getIDs(self):
         list_id = []
         with open('movie_ids_02_04_2019.json', 'r') as json_data:
