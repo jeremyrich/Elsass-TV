@@ -34,13 +34,17 @@ class Command(BaseCommand):
                 vote_count = data['vote_count'],
             )
             if created:
-                movie.save()                
-                
+                movie.save()
+
         except Exception as ex:
-            with open('errors_movies.txt', 'a') as errors:
-                errors.write(str(ex))
-                errors.write("\n\nSomething went wrong saving this movie: {}, id:{} \n{}".format(data['title'], data['id'], str(ex)))
+            try:
+                with open('errors_movies.txt', 'a') as errors:
+                    errors.write(str(ex))
+                    errors.write("\n\nSomething went wrong saving this movie: {}, id:{} \n{}".format(data['title'], data['id'], str(ex)))
+            except KeyError:
+                pass
                 
+
     def getIDs(self):
         list_id = []
         with open('movie_ids_02_04_2019.json', 'r') as json_data:
