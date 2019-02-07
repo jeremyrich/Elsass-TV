@@ -83,11 +83,11 @@ with open('Elsasstv/SECRET_DB.txt') as f:
     db_password = f.read().strip()
 DATABASES = {'default': {
 							'ENGINE': 'django.db.backends.mysql',
+                            'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
 							'NAME': 'Elsasstv',
 							'USER': 'root',
 							'PASSWORD' : db_password,
-							'HOST' : 'localhost',
-							'PORT': '3306',
+							'PORT': '8889',
 			}}
 
 
