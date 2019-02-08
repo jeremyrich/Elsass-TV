@@ -51,6 +51,11 @@ class Command(BaseCommand):
             for line in json_data:
                 data = json.loads(line)
                 list_id.append(data['id'])
+        In_db_movies = Movie.objects.all() 
+        list_id_db = [film.id for film in In_db_movies]        
+        # We get the ids already present in the db
+        list_id = list(set(list_id) - set(list_id_db)) # We remove the ids of the movies already in the db to 
+        # avoid the further API calls to movies already in the db
 
         return list_id
 
@@ -67,8 +72,9 @@ class Command(BaseCommand):
 
 test  = Command()
 list_id = test.getIDs()
+
 for i in range(len(list_id)):
-    test.handle(list_id[i])
+       test.handle(list_id[i])
    
     
 
