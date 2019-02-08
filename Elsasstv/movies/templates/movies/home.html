@@ -1,0 +1,8 @@
+<h1> Welcome on the Elsass-TV website</h1>
+
+    <ul>
+    {% for movie in popular_movies%}
+        <li>{{movie.title}}</li></br>
+        <a href = {{movie.poster_path}}></a>    
+    {% endfor %}
+    </ul>
