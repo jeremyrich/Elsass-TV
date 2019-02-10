@@ -75,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Elsasstv.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -86,8 +85,8 @@ DATABASES = {'default': {
 							'NAME': 'Elsasstv',
 							'USER': 'root',
 							'PASSWORD' : db_password,
-							'HOST' : 'localhost',
-							'PORT': '3306',
+							'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
+							'PORT': '8889',
 			}}
 
 
