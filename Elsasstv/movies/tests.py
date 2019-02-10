@@ -14,13 +14,13 @@ class MovieTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_has_response(self):
-        # testing if the page detail give a response
+        # testing if the page "detail" gives a correct http response
         movie = Movie.objects.create(id=1, title="Matrix")
         response = self.client.get(reverse('movies:detail', args=(movie.id,)))
         self.assertEqual(response.status_code, 200)
 
     def test_has_movie_title(self):
-        # test if the page detail returns the right movie
+        # test if the page "detail" returns the right movie
         movie = Movie.objects.create(id=1, title="Matrix")
         response = self.client.get(reverse('movies:detail', args=(movie.id,)))
         body = str(response.content)
