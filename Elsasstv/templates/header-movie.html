@@ -1,0 +1,75 @@
+{% load static %}
+
+<header id="videohead-pro" class="sticky-header">
+    <div id="video-logo-background"><a href=""><img src="{% static 'images/logo.png' %}" alt="Logo"></a></div>
+    
+    <div id="video-search-header">
+        <input type="text" placeholder="Search for Movies or TV Series" aria-label="Search">
+        <div id="video-search-header-filtering">
+        </div>  
+    </div>  
+    
+    
+    
+    <div id="header-user-profile">
+        <div id="header-user-profile-click" class="noselect">
+            <div id="header-username">Hi, Username</div><i class="fas fa-angle-down"></i>
+        </div>  
+        <div id="header-user-profile-menu">
+            <ul>
+                <li><a href="#"><span class="icon-User"></span>My Profile</a></li>
+                <li><a href="#"><span class="icon-Favorite-Window"></span>My Favorites</a></li>
+                <li><a href="#"><span class="icon-Gears"></span>Account Details</a></li>
+                <li><a href="#"><span class="icon-Power-3"></span>Log Out</a></li>
+            </ul>
+        </div>  
+    </div>  
+    
+    <div id="header-user-notification">
+        <div id="header-user-notification-click" class="noselect">
+            <i class="far fa-bell"></i>
+            <span class="user-notification-count">3</span>
+        </div>  
+        <div id="header-user-notification-menu">
+            <h3>Notifications</h3>
+            </div>
+    </div>  
+    
+    
+    
+    <div class="clearfix"></div>
+    
+    <nav id="sidebar-nav">  
+        <ul id="vertical-sidebar-nav" class="sf-menu">
+            <li class="normal-item-pro current-menu-item">
+                <a href="/movies">
+        <span class="icon-Reel"></span>
+                    Movies
+                </a>
+            </li>
+            
+            <li class="normal-item-pro">
+                <a href="#">
+        <span class="icon-Old-TV"></span>
+                    TV Show
+                </a>
+            </li>
+            <li class="normal-item-pro">
+                <a href="#">
+        <span class="icon-Movie-Ticket"></span>
+                    New Arrivals
+                </a>
+            </li>
+            <li class="normal-item-pro">
+                <a href="#">
+        <span class="icon-Clock"></span>
+                    Coming Soon
+                </a>
+            </li>
+
+        </ul>
+<div class="clearfix"></div>
+</nav>
+
+    
+    </header>
