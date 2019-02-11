@@ -71,28 +71,28 @@ button.btn:focus{
     margin-right:8px
 }
 #header-user-notification-list li a:hover,#header-user-profile-menu ul li a:hover,#mobile-navigation-pro li.current-menu-item a,.billing-plan-container h3 .total,.current-plan-account h2,.item-listing-text-skrn h6 a:hover,.item-playlist-text-skrn h5 a:hover,.jumbotron-pro [class*=" icon-"],.jumbotron-pro [class^=icon-],.jumbotron-pro i.fa-check-circle,.payment-method-container h5 sup,.pricing-plans-page-container h2,.progression-studios-slider-more-options ul li a:hover,.progression-studios-slider-more-options ul li:last-child a:hover,.welcome-page-styles h3.welcome-plan-title span,a,h2.registration-final-heading span,ul#profile-watched-stats span,ul#sidebar-reviews-pro li .spoiler-review,ul.checkmark-list-pro li:before,ul.page-numbers li a.next:hover,ul.page-numbers li a.previous:hover,ul.registration-genres-choice li i.fa-check-circle,ul.registration-invite-friends-list li i.fa-check-circle,ul.welcome-features li:before{
-    color:#3db13d
+    color:#2325c2  
 }
 .flexslider.progression-studios-dashboard-slider h2 a:hover,a:hover{
     color:#9d9d9d;
     text-decoration:none
 }
 #search-mobile-nav-pro input:focus,.form-group input:focus,.form-group textarea:focus,.jumbotron-pro.jumbotron-selected,.registration-billing-form .jumbotron-pro:hover,select.custom-select:focus,ul#registration-steps-pro li.current-menu-item,ul#registration-steps-pro li:hover,ul.dashboard-genres-pro li.active,ul.registration-genres-choice li.active,ul.registration-genres-choice li:hover,ul.registration-invite-friends-list li.active,ul.registration-invite-friends-list li:hover{
-    border-color:#3db13d
+    border-color:#2325c2  
 }
 ul#registration-steps-pro li.current-menu-item .registration-step-circle-icon:before{
-    border-top-color:#3db13d
+    border-top-color:#2325c2  
 }
 .form-group-invite-friends ::-webkit-scrollbar-thumb{
-    background:#3db13d
+    background:#2325c2  
 }
 .checkbox-pro-container .checkmark-pro:after,a.edit-profile-sidebar,body .asRange .asRange-pointer:before,body .asRange .asRange-selected,span.user-notification-count,ul#friends-activity-profiles li.friends-activity-profiles-more a,ul#registration-steps-pro li.current-menu-item .registration-step-circle-icon,ul.dashboard-sub-menu li.current a:after{
-    background:#3db13d
+    background:#2325c2  
 }
 #pro-scroll-top:hover,.btn-green-pro,.btn-header-pro:hover,.btn:hover,.flex-control-paging li a.flex-active,.sf-menu a:before,a.not-a-member-pro:hover,body .short-border-bottom:after,ul.page-numbers li span.page-numbers.current{
     color:#fff;
-    border-color:#3db13d;
-    background:#3db13d
+    border-color:#2325c2  ;
+    background:#2325c2  
 }
 .btn-green-pro:hover,ul#friends-activity-profiles li.friends-activity-profiles-more a:hover{
     color:#fff;
@@ -101,15 +101,15 @@ ul#registration-steps-pro li.current-menu-item .registration-step-circle-icon:be
 }
 ::-moz-selection{
     color:#fff;
-    background:#3db13d
+    background:#2325c2  
 }
 ::selection{
     color:#fff;
-    background:#3db13d
+    background:#2325c2  
 }
 ::selection h2{
     color:#fff;
-    background:#3db13d
+    background:#2325c2  
 }
 .btn-shadow-pro{
     box-shadow:0 12px 28px rgba(61,177,61,.38)
@@ -595,7 +595,7 @@ ul#vertical-sidebar-nav.sf-menu li li a,ul#vertical-sidebar-nav.sf-menu li li:la
     border-bottom:1px solid rgba(255,255,255,.08)
 }
 ul#vertical-sidebar-nav.sf-menu a:hover,ul#vertical-sidebar-nav.sf-menu li.current-menu-item a,ul#vertical-sidebar-nav.sf-menu li.sfHover a{
-    color:#3db13d
+    color:#2325c2  
 }
 ul#vertical-sidebar-nav.sf-menu ul{
     font-weight:300;
@@ -1833,7 +1833,7 @@ a.movie-detail-header-play-btn i{
     font-family:Montserrat,sans-serif
 }
 .rating-pro>label.selected:before,.rating-pro>label.selected~label:before,.rating-pro>label:hover:before,.rating-pro>label:hover~label:before{
-    color:#3db13d;
+    color:#2325c2  ;
     font-weight:900
 }
 .movie-details-section{
@@ -2706,7 +2706,7 @@ ul.checkmark-list-pro li:before{
 .pricing-table-pro h2{
     font-size:50px;
     margin-bottom:25px;
-    color:#3db13d
+    color:#2325c2  
 }
 .pricing-table-pro h2 sup{
     font-size:18px;
