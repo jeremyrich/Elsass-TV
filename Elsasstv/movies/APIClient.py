@@ -31,7 +31,6 @@ class APIClient:
         full_url = self.call('GET', url)
 
         movies = []
-        print(full_url)
         for movie in full_url['results']:
             movie['poster_path'] = 'https://image.tmdb.org/t/p/w200' + str(movie['poster_path'])
             movies.append(movie)
@@ -45,16 +44,18 @@ class APIClient:
         full_url = self.call('GET', url)
 
         cast = []
-
         for actor in full_url['cast']:
-            actor['profile_path'] = 'https://image.tmdb.org/t/p/w200' + str(actor['profile_path'])
-            cast.append(actor)
+            profile_path = str(actor['profile_path'])
 
+            if profile_path == str(None):
+                actor['profile_path'] = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+            else:
+                actor['profile_path'] = 'https://image.tmdb.org/t/p/w200' + profile_path
+
+            cast.append(actor)
         return cast
 
         # cast = full_url['cast']
 
         # for index, actor in enumerable(cast):
         #     cast[index]['profile_path'] = 'https://image.tmdb.org/t/p/w200' + str(actor['profile_path'])
-
-        # return cast
