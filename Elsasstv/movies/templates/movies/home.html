@@ -1,8 +1,141 @@
-<h1> Welcome on the Elsass-TV website</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-    <ul>
-    {% for movie in popular_movies%}
-        <li>{{movie.title}}</li></br>
-        <a href = {{movie.poster_path}}></a>    
-    {% endfor %}
-    </ul>
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        
+        {% block css %}{% endblock %} 
+
+        {% block head %}
+        <title>Elasstv - movie</title>
+        {% endblock %}
+
+    </head>
+
+
+    <body id="page-top">
+
+		{% block body %}
+		
+		{% include 'header-movie.html' %}
+
+        <div id="sidebar-bg">
+				
+				<main id="col-main">
+					
+					<div class="flexslider progression-studios-dashboard-slider progression-studios-full-height-slider">
+							<ul class="slides">
+							<li class="progression_studios_animate_left">
+								<div class="progression-studios-slider-dashboard-image-background" style="background-image:url({% static 'movies/images/plans-background.jpg' %});">
+									<div class="progression-studios-slider-display-table">
+										<div class="progression-studios-slider-vertical-align">
+										
+											<div class="container">
+												
+												<a class="progression-studios-slider-play-btn afterglow" href="/movies/{{first_popular.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{first_popular.poster_path}}" alt="Listing"></a>
+												
+													<div
+														class="circle-rating-pro"
+														data-value="0.86"
+														data-animation-start-value="0.86"
+														data-size="70"
+														data-thickness="6"
+														data-fill="{
+															&quot;color&quot;: &quot;#2325c2  &quot;
+														}"
+														data-empty-fill="#def6de"
+														data-reverse="true"
+													><span style="color:#2325c2  ;">{{first_popular.vote_average}}</span></div>
+											
+												<div class="progression-studios-slider-dashboard-caption-width">
+													<div class="progression-studios-slider-caption-align">
+														<h6>Movies</h6>
+														<ul class="progression-studios-slider-rating">
+															<li>HD</li>
+														</ul>
+														<h2><a href="/movies/{{first_popular.id}}/detail">{{first_popular.title}}</a></h2>
+														<ul class="progression-studios-slider-meta">
+															<li>{{first_popular.release_date}}</li>
+															<li>{{first_popular.runtime}} min.</li>
+														</ul>
+														<p class="progression-studios-slider-description">{{first_popular.overview}}</p>
+														
+														<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro afterglow" href="/movies/{{first_popular.id}}/detail"><i class=""></i>Watch more</a>
+														
+														
+														<div class="progression-studios-slider-more-options">
+															<i class="fas fa-ellipsis-h"></i>
+															<ul>
+																<li><a href="#!">Add to Favorites</a></li>
+																<li><a href="#!">Add to Watchlist</a></li>
+																<li><a href="#!">Write A Review</a></li>
+															</ul>
+														</div>
+														<div class="clearfix"></div>      
+											
+														
+													</div>  
+												</div>  
+											
+											</div>  
+										
+										</div>  
+									</div>  
+								
+									<div class="progression-studios-slider-mobile-background-cover"></div>
+								</div>  
+							</li>
+					</div>  
+		
+					<div class="clearfix"></div>
+					
+					<div class="dashboard-container">
+						
+						<h4 class="heading-extra-margin-bottom">Popular Movies</h4>
+						<div class="row">
+							{% for mov in popular_movies%}
+                				<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                				    <div class="item-listing-container-skrn">
+                				        <a href="/movies/{{mov.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{mov.poster_path}}" alt="Listing"></a>
+                				        <div class="item-listing-text-skrn">
+                				            <div class="item-listing-text-skrn-vertical-align"><h6><a href="/movies/{{mov.id}}/detail">{{movie.title}}</a></h6>
+                				              <div
+                				                class="circle-rating-pro"
+                				                data-value="0.86"
+                				                data-animation-start-value="0.86"
+                				                data-size="32"
+                				                data-thickness="3"
+                				                data-fill="{
+                				                  &quot;color&quot;: &quot;#2325c2  &quot;
+                				                }"
+                				                data-empty-fill="#def6de"
+                				                data-reverse="true"
+                				              ><span style="color:#2325c2  ;">8.6</span></div>
+                				            </div>  
+                				        </div>  
+                				    </div>  
+                				</div>  
+							{% endfor %} 
+							<ul>
+						</div>  
+						
+					</div>  
+				</main>
+				
+				
+				</div>  
+    	{% endblock %}
+
+        {% block pre-footer %}
+    
+    	{% endblock %}
+
+        {% include 'footer.html' %}
+
+    </body>
+
+
+</html>

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        
+        {% block css %}{% endblock %} 
+
+        {% block head %}
+        <title>Elasstv</title>
+        {% endblock %}
+
+    </head>
+
+
+    <body id="page-top">
+
+        
+
+        {% block body %}
+        {% include 'header.html' %}
+        {% include 'login.html' %}
+
+        <div class="flexslider progression-studios-slider">
+            <ul class="slides">
+                  <li class="progression_studios_animate_in">
+                      <div class="progression-studios-slider-image-background" style="background-image:url({% static 'images/slide-1.jpg' %});">
+                          <div class="progression-studios-slider-display-table">
+                              <div class="progression-studios-slider-vertical-align">
+                                  
+                                  <div class="container">
+                                      
+                                      <div class="progression-studios-slider-caption-width">
+                                          <div class="progression-studios-slider-caption-align">
+                                              <h2>Welcome to Elsasstv<span style="color:#2325c2  ;">.</span></h2>
+                                              <h6>Watch the largest collection of Movies and TV series anytime anywhere!</h6>
+                                              <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="#" role="button">Start now !</a>
+                                          </div>  
+                                      </div>  
+                                      
+                                  </div>  
+                                  
+                              </div>  
+                          </div>  
+                          
+                      </div>  
+                  </li>
+              </ul>
+          </div>
+          
+
+
+
+          <div class="dashboard-container">
+				
+            <h4 class="heading-extra-margin-bottom">Most Popular TV-Show</h4>
+            <div class="row">
+
+                    {% for movie in popular_movies%}
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="item-listing-container-skrn">
+                        <a href="/movies/{{movie.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{movie.poster_path}}" alt="Listing"></a>
+                        <div class="item-listing-text-skrn">
+                            <div class="item-listing-text-skrn-vertical-align"><h6><a href="/movies/{{movie.id}}/detail">{{movie.title}}</a></h6>
+                              <div
+                                class="circle-rating-pro"
+                                data-value="0.86"
+                                data-animation-start-value="0.86"
+                                data-size="32"
+                                data-thickness="3"
+                                data-fill="{
+                                  &quot;color&quot;: &quot;#2325c2  &quot;
+                                }"
+                                data-empty-fill="#def6de"
+                                data-reverse="true"
+                              ><span style="color:#2325c2  ;">8.6</span></div>
+                            </div>  
+                        </div>  
+                    </div>  
+                </div>  
+                {% endfor %}
+
+            </div>  
+            
+            
+            
+                    
+        </div>  
+
+
+
+
+
+
+    	{% endblock %}
+
+        {% block pre-footer %}
+    
+    	{% endblock %}
+
+        {% include 'footer.html' %}
+
+    </body>
+
+
+</html>
