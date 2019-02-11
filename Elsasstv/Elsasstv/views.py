@@ -7,7 +7,7 @@ def home(request):
 
     popular_movies = Movie.objects.order_by('-popularity')[:100] 
 
-    # Beginning of login_user_form view
+    # Login
     error = False
 
     if request.method == 'POST':
@@ -26,7 +26,7 @@ def home(request):
 
     else:
         login_user = UserForm() 
-    # end of login_user_form view
+   
 
     return render(request, 'home.html', locals())
 
