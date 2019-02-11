@@ -1,0 +1,25 @@
+{% load static %}
+
+  
+<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModal" aria-hidden="true">
+    <button type="button" class="close float-close-pro" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+   </button>
+  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header-pro">
+          <h2>Registration</h2>
+          <h6>Create an account for Elsasstv</h6>
+      </div>
+      <div class="modal-body-pro social-login-modal-body-pro">    
+        <h2>Register</h2>
+          <form class = 'form-group' method="post">
+            {% csrf_token %}
+            {{ new_user.as_p }}
+            <button type="submit">Register</button>
+          </form>
+      </div> 
+    </div>  
+  </div>  
+</div>  
+ 
