@@ -12,10 +12,27 @@
           <h6>Create an account for Elsasstv</h6>
       </div>
       <div class="modal-body-pro social-login-modal-body-pro">    
-        <h2>Register</h2>
           <form class = 'form-group' method="post">
             {% csrf_token %}
-            {{ new_user.as_p }}
+            <div class="form-group">
+                <input type="text" class ="form-control" name="username" value="qsd" maxlength="30" autofocus="" required="" id="id_username" placeholder="username"> 
+            </div>
+            <div class="form-group">
+                <input type="text" class ="form-control" name="first_name" maxlength="30" id="id_first_name" placeholder="first name (optionnal)">
+            </div>
+            <div class="form-group">
+                <input type="text" class ="form-control" name="last_name" maxlength="30" id="id_last_name" placeholder="last name (optionnal)">
+            </div>
+            <div class="form-group">
+                <input type="email" class ="form-control" name="email" maxlength="254" id="id_email" placeholder="email (optionnal)">
+            </div>
+            <div class="form-group">
+                <input type="password" class ="form-control" name="password1" required="" id="id_password1" placeholder="password"> 
+            </div>
+            <div class="form-group">
+                <input type="password" class ="form-control" name="password2" required="" id="id_password2" placeholder="repeat password"> 
+            </div>
+            
             <button type="submit">Register</button>
           </form>
       </div> 
