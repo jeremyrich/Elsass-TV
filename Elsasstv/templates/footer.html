@@ -35,3 +35,5 @@
 <script src="{% static 'js/circle-progress.min.js' %}" defer></script>
 <script src="{% static 'js/afterglow.min.js' %}" defer></script>
 <script src="{% static 'js/script-dashboard.js' %}" defer></script>
+{% if new_user.errors %} <script src="{% static 'js/LoginModal.js' %}" ></script> {% endif %}
+{% if login_user.errors %} <script src="{% static 'js/RegisterModal.js' %}" ></script> {% endif %}
