@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        
+        {% block css %}{% endblock %} 
+
+        {% block head %}
+        <title>Elasstv - movie</title>
+        {% endblock %}
+
+    </head>
+
+
+    <body id="page-top">
+
+		{% block body %}
+		
+		{% include 'header-movie.html' %}
+
+        <div id="sidebar-bg">
+				
+			<div id="content-sidebar-pro">
+			
+				<div id="content-sidebar-image">
+					<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{person.profile_path}}"" alt="Movie Poster">
+				</div>
+				
+				<div class="content-sidebar-section">
+					<h2 class="content-sidebar-sub-header">{{person.name}}</h2>
+					<ul class="progression-studios-slider-rating">
+					</ul>
+				</div>  
+				
+				<div class="content-sidebar-section">
+					<h4 class="content-sidebar-sub-header">Gender:</h4>
+					<div class="content-sidebar-short-description">{{person.gender}}</div>
+				</div>  
+				
+				<div class="content-sidebar-section">
+					<h4 class="content-sidebar-sub-header">Place of birth:</h4>
+					<div class="content-sidebar-short-description">{{person.place_of_birth}}</div>
+				</div>  
+				
+				<div class="content-sidebar-section">
+					<h4 class="content-sidebar-sub-header">know for:</h4>
+					<div class="content-sidebar-short-description">{{person.known_for_department}}</div>
+				</div>  
+	
+				
+				
+				<div class="content-sidebar-section">
+					<h2 class="content-sidebar-sub-header adjusted-recent-reviews">Recent Reviews</h2>
+					<ul id="sidebar-reviews-pro">
+						<li>
+						  <div
+							class="circle-rating-pro"
+							data-value="0.86"
+							data-animation-start-value="0.86"
+							data-size="32"
+							data-thickness="3"
+							data-fill="{
+							  &quot;color&quot;: &quot;#2325c2  &quot;
+							}"
+							data-empty-fill="#def6de"
+							data-reverse="true"
+						  ><span style="color:#2325c2  ;">8.6</span></div>
+							<h6>Dan Cederholm</h6>
+							<div class="sidebar-review-time">October 22, 2017</div>
+							<div class="spoiler-review">Contains Spoiler</div>
+							<p>They don't make many Sci-Fi films these days. This was a pleasant surprise all throughout the film. I really like this film.</p>
+						</li>
+					</ul>
+				</div>  
+				
+			</div>  
+			
+			
+			<main id="col-main-with-sidebar">
+				
+				<div id="person-detail-header-pro" >
+					
+						<div id="person-detail-gradient-pro">
+
+								<div class="content-sidebar-section">
+										<h1 class="content-sidebar-sub-header">{{person.name}}</h1>
+									</div>  
+
+									<div class="content-sidebar-section">
+											<h1 class="content-sidebar-sub-header">Biography</h1><br>
+											<div class="content-sidebar-short-description">{{person.biography}}</div>
+										</div>  
+
+
+										<br><br>
+						</div>
+				</div>  
+				
+				
+				<div class="dashboard-container">
+					
+					
+					<div class="movie-details-section"><br><br>
+						<h2>Know for</h2>
+						<div class="row">
+
+								{% for movie in popular_movies %}
+                				<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                				    <div class="item-listing-container-skrn">
+                				        <a href="/movies/{{movie.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{movie.poster_path}}" alt="Listing"></a>
+                				        <div class="item-listing-text-skrn">
+                				            <div class="item-listing-text-skrn-vertical-align"><h6><a href="/movies/{{movie.id}}/detail">{{movie.title}}</a></h6>
+                				              <div
+                				                class="circle-rating-pro"
+                				                data-value="0.86"
+                				                data-animation-start-value="0.86"
+                				                data-size="32"
+                				                data-thickness="3"
+                				                data-fill="{
+                				                  &quot;color&quot;: &quot;#2325c2  &quot;
+                				                }"
+                				                data-empty-fill="#def6de"
+                				                data-reverse="true"
+                				              ><span style="color:#2325c2  ;">8.6</span></div>
+                				            </div>  
+                				        </div>  
+                				    </div>  
+                				</div>  
+							{% endfor %} 
+						</div>  
+					</div>  
+	
+					<div class="movie-details-section">
+						
+					</div>  
+	
+						
+					<div class="movie-details-section">
+					
+					</div>  
+					
+				</div>  
+			</main>
+			
+					
+				</div>  
+    	{% endblock %}
+
+        {% block pre-footer %}
+    
+    	{% endblock %}
+
+        {% include 'footer.html' %}
+
+    </body>
+
+
+</html>
