@@ -75,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Elsasstv.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
