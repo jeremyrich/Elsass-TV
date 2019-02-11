@@ -355,7 +355,7 @@ header#videohead-pro{
     border-bottom:1px solid rgba(0,0,0,.08)
 }
 nav#sidebar-nav{
-    padding-top:90px;
+    margin-top:90px;
     position:fixed;
     top:0;
     left:0;

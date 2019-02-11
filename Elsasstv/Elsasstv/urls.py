@@ -5,6 +5,7 @@ from django.urls import path, include
 import Elsasstv.views as views
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('', include('django.contrib.auth.urls')),
