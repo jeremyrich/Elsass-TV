@@ -19,3 +19,10 @@ def detail(request, movie_id):
     similar_movies = APIClient().get_similar_movies(movie_id)
     return render (request, 'movies/movie-detail.html', locals())
 
+def person(request, person_id):
+    """View rendering the detailed informations of a person""" 
+    person = get_object_or_404(Person, pk=person_id)
+    popular_movies = Movie.objects.order_by('-popularity')[:10]
+    first_popular = Movie.objects.order_by('-popularity')[0]    
+    return render(request, 'movies/person-detail.html', locals())
+
