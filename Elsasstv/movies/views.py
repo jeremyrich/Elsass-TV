@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     """View rendering the 100th more popular movies"""
     popular_movies = Movie.objects.order_by('-popularity')[:100]
-    first_popular = Movie.objects.order_by('-popularity')[0]    
     return render(request, 'movies/home.html', locals())
 
 def detail(request, movie_id):
@@ -22,7 +21,6 @@ def detail(request, movie_id):
 def person(request, person_id):
     """View rendering the detailed informations of a person""" 
     person = get_object_or_404(Person, pk=person_id)
-    popular_movies = Movie.objects.order_by('-popularity')[:10]
-    first_popular = Movie.objects.order_by('-popularity')[0]    
+    popular_movies = Movie.objects.order_by('-popularity')[:10]   
     return render(request, 'movies/person-detail.html', locals())
 
