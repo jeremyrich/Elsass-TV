@@ -29,8 +29,8 @@ def home(request):
         new_user = RegisterForm(request.POST)
         if new_user.is_valid():
             new_user.save()
-            new_username = new_user.cleaned_data.get['username']
-            new_password = new_user.cleaned_data.get['password1']
+            new_username = new_user.cleaned_data.get('username')
+            new_password = new_user.cleaned_data.get('password1')
             user = authenticate(username=new_username, password=new_password)
             login(request, user)
             return redirect('movies:home')
