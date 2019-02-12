@@ -1,7 +1,7 @@
 {% load static %}
 
 <header id="videohead-pro" class="sticky-header">
-    <div id="video-logo-background"><a href=""><img src="{% static 'images/logo.png' %}" alt="Logo"></a></div>
+    <div id="video-logo-background"><a href="/"><img src="{% static 'images/logo.png' %}" alt="Logo"></a></div>
     
     <div id="video-search-header">
         <input type="text" placeholder="Search for Movies or TV Series" aria-label="Search">
@@ -13,14 +13,14 @@
     
     <div id="header-user-profile">
         <div id="header-user-profile-click" class="noselect">
-            <div id="header-username">Hi, Username</div><i class="fas fa-angle-down"></i>
+                 <div id="header-username">Hi {% if user.is_authenticated %}, {{user.username}} {% endif %} </div><i class="fas fa-angle-down"></i>
         </div>  
         <div id="header-user-profile-menu">
             <ul>
                 <li><a href="#"><span class="icon-User"></span>My Profile</a></li>
                 <li><a href="#"><span class="icon-Favorite-Window"></span>My Favorites</a></li>
                 <li><a href="#"><span class="icon-Gears"></span>Account Details</a></li>
-                <li><a href="#"><span class="icon-Power-3"></span>Log Out</a></li>
+                <li><a href="/logout"><span class="icon-Power-3"></span>Log Out</a></li>
             </ul>
         </div>  
     </div>  

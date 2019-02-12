@@ -9,4 +9,5 @@ urlpatterns = [
 
     path('', views.home, name='home'),
     path('<int:movie_id>/detail', views.detail, name="detail"),
+    
 ]
