@@ -178,14 +178,14 @@
 								{% for pers in person%}
 									<div class="col-12 col-md-6 col-lg-6 col-xl-4">
 										<div class="item-listing-container-skrn">
-											<a href="#!"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{pers.profile_path}}" alt="Cast"></a>
+											<a href="/movies/{{pers.id}}/person-detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{pers.profile_path}}" alt="Cast"></a>
 											<div class="item-listing-text-skrn item-listing-movie-casting">
 												<h6><a href="#!">{{pers.name}}</a></h6>
 												<div class="movie-casting-sub-title">{{pers.know_for_department}}</div>
 											</div>  
 										</div>  
 									</div>  
-									{% endfor %} 
+								{% endfor %} 
 						</div>  
 					</div>  
 	
@@ -197,7 +197,7 @@
 								{% for movie in similar_movies%}
                 				<div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 				    <div class="item-listing-container-skrn">
-                				        <a href="/movies/{{movie.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{movie.poster_path}}" alt="Listing"></a>
+                				        <a href="/movies/{{movie.id}}/detail"><img src="{{movie.poster_path}}" alt="Listing"></a>
                 				        <div class="item-listing-text-skrn">
                 				            <div class="item-listing-text-skrn-vertical-align"><h6><a href="/movies/{{movie.id}}/detail">{{movie.title}}</a></h6>
                 				              <div

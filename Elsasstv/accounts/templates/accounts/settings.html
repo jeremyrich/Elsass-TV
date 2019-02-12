@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        
+        {% block css %}{% endblock %} 
+
+        {% block head %}
+        <title>Elasstv - movie</title>
+        {% endblock %}
+
+    </head>
+
+
+    <body id="page-top">
+
+		{% block body %}
+		
+		{% include 'header-movie.html' %}
+
+        <div id="sidebar-bg">
+				  
+				  <main id="col-main">
+					  
+					  <div class="dashboard-container">
+						  
+						  <ul class="dashboard-sub-menu">
+							  <li class="current"><a href="dashboard-account.html">Account Settings</a></li>
+						  </ul><!-- close .dashboard-sub-menu -->
+						  
+						  <div class="container-fluid">
+							  <div class="row">
+							  
+								  <div class="col-12  col-lg-3">
+									  <div id="account-edit-photo">
+										  <div><img src="{% static 'accounts/images/profile-image-sidebar.jpg' %}" alt="Account Image"></div>
+										  <p><a href="#!" class="btn btn-green-pro">Change Profile Picture</a></p>
+										  <p><a href="#!" class="btn">Delete Photo</a></p>
+									  </div>
+								  </div><!-- close .col -->
+								  <div class="col">
+								  
+									  <form class="account-settings-form">
+								  
+									  <h5>General Information</h5>
+									  <p class="small-paragraph-spacing">By letting us know your name, we can make our support experience much more personal.</p>
+									  <div class="row">
+										  <div class="col-sm">
+												<div class="form-group">
+												  <label for="first-name" class="col-form-label">First Name:</label>
+													<input type="text" class="form-control" id="first-name" value="Suzie">
+												</div>
+										  </div><!-- close .col -->
+										  <div class="col-sm">
+												   <div class="form-group">
+													 <label for="last-name" class="col-form-label">Last Name:</label>
+													   <input type="text" class="form-control" id="last-name" value="Smith">
+												   </div>
+										  </div><!-- close .col -->
+										  <div class="col-sm">
+												   <div class="form-group">
+													 <label for="last-name" class="col-form-label">Country:</label>
+												   <select class="custom-select">
+													 <option value="0">All Countries</option>
+													 <option value="1">Argentina</option>
+													 <option value="2">Australia</option>
+													 <option value="3">Bahamas</option>
+													 <option value="4">Belgium</option>
+													 <option value="5">Brazil</option>
+													 <option value="6">Canada</option>
+													 <option value="7">Chile</option>
+													 <option value="8">China</option>
+													 <option value="9">Denmark</option>
+													 <option value="10">Ecuador</option>
+													 <option value="11">France</option>
+													 <option value="12">Germany</option>
+													 <option value="13">Greece</option>
+													 <option value="14">Guatemala</option>
+													 <option value="15">Italy</option>
+													 <option value="16">Japan</option>
+													 <option value="17">asdfasdf</option>
+													 <option value="18">Korea</option>
+													 <option value="19">Malaysia</option>
+													 <option value="20">Monaco</option>
+													 <option value="21">Morocco</option>
+													 <option value="22">New Zealand</option>
+													 <option value="23">Panama</option>
+													 <option value="24">Portugal</option>
+													 <option value="25">Russia</option>
+													 <option value="26">United Kingdom</option>
+													 <option selected>United States</option>
+												   </select>
+												   </div>
+										  </div><!-- close .col -->
+									  </div><!-- close .row -->
+									  <hr>
+								  
+									  <h5>Account Information</h5>
+									  <p class="small-paragraph-spacing">You can change the email address you use here.</p>
+									  
+									  <div class="row">
+										  <div class="col-sm">
+												<div class="form-group">
+												  <label for="e-mail" class="col-form-label">E-mail</label>
+													<input type="text" class="form-control" id="e-mail" value="{{user.email}}">
+												</div>
+										  </div><!-- close .col -->
+										  <div class="col-sm">
+												   <div class="form-group">
+													 <div><label for="button-change" class="col-form-label">&nbsp; &nbsp;</label></div>
+													   <a href="#!" class="btn btn-form">Change E-mail</a>
+												   </div>
+										  </div><!-- close .col -->
+										  
+									  </div><!-- close .row -->
+									  
+									  <hr>
+									  <h5>Change Password</h5>
+									  <p class="small-paragraph-spacing">You can change the password you use for your account here.</p>
+									  <div class="row">
+										  <div class="col-sm">
+												<div class="form-group">
+												  <label for="password" class="col-form-label">Current Password:</label>
+													<input type="text" class="form-control" id="password" value="&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;">
+												</div>
+										  </div><!-- close .col -->
+										  <div class="col-sm">
+												<div class="form-group">
+												  <label for="new-password" class="col-form-label">New Password:</label>
+													<input type="text" class="form-control" id="new-password" placeholder="Minimum of 6 characters">
+												</div>
+										  </div><!-- close .col -->
+										  <div class="col-sm">
+												<div class="form-group">
+												  <div><label for="confirm-password" class="col-form-label">&nbsp; &nbsp;</label></div>
+													<input type="text" class="form-control" id="confirm-password" placeholder="Confirm New Password">
+												</div>
+										  </div><!-- close .col -->
+									  </div><!-- close .row -->
+									  
+										  <div class="clearfix"></div>
+									  <hr>
+									  <p><a href="dashboard-account.html" class="btn btn-green-pro">Save Changes</a></p>
+									  <br>
+									  </form>
+								  
+								  </div><!-- close .col -->
+							  
+							  </div><!-- close .row -->
+						  </div><!-- close .container-fluid -->
+								  
+					  </div><!-- close .dashboard-container -->
+				  </main>
+				  
+				  
+				  </div><!-- close #sidebar-bg-->
+				  
+    	{% endblock %}
+
+        {% block pre-footer %}
+    
+    	{% endblock %}
+
+        {% include 'footer.html' %}
+
+    </body>
+
+
+</html>
