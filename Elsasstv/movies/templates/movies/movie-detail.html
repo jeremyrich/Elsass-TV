@@ -180,7 +180,7 @@
 										<div class="item-listing-container-skrn">
 											<a href="/movies/{{pers.id}}/person-detail"><img src="{{pers.profile_path}}" alt="Cast"></a>
 											<div class="item-listing-text-skrn item-listing-movie-casting">
-												<h6><a href="#!">{{pers.name}}</a></h6>
+												<h6><a href="/movies/{{pers.id}}/person-detail">{{pers.name}}</a></h6>
 												<div class="movie-casting-sub-title">{{pers.know_for_department}}</div>
 											</div>  
 										</div>  
@@ -211,7 +211,7 @@
                 				                }"
                 				                data-empty-fill="#def6de"
                 				                data-reverse="true"
-                				              ><span style="color:#2325c2  ;">8.6</span></div>
+                				              ><span style="color:#2325c2  ;">{{movie.vote_average}}</span></div>
                 				            </div>  
                 				        </div>  
                 				    </div>  
