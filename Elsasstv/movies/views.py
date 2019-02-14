@@ -21,6 +21,15 @@ def detail(request, movie_id):
 def person(request, person_id):
     """View rendering the detailed informations of a person""" 
     person = get_object_or_404(Person, pk=person_id)
-    popular_movies = Movie.objects.order_by('-popularity')[:10]   
+    known_for_ids = APIClient().get_person_credits(person_id)
+    known_for=[]
+    try: 
+
+        for id in known_for_ids:
+            print(id)
+            known_for.append(Movie.objects.get(pk=id))
+    except:
+        pass
+        
     return render(request, 'movies/person-detail.html', locals())
 
