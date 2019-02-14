@@ -4,6 +4,7 @@ from movies.models import Movie, Person
 from movies.APIClient import APIClient
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 def home(request):
@@ -15,6 +16,10 @@ def detail(request, movie_id):
     """View rendering the detailed informations of a movie""" 
     movie = get_object_or_404(Movie, pk=movie_id)
     person, director = APIClient().get_movie_credits(movie_id)
+    for pers in person:
+        if pers['profile_path'] == None:
+            pers['profile_path'] = static('images/not_available.png')
+
     similar_movies = APIClient().get_similar_movies(movie_id)
     return render (request, 'movies/movie-detail.html', locals())
 
