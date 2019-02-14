@@ -32,7 +32,7 @@ class APIClient:
 
         movies = []
         for movie in full_url['results']:
-            movie['poster_path'] = 'https://image.tmdb.org/t/p/w200' + str(movie['poster_path'])
+            movie['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + str(movie['poster_path'])
             movies.append(movie)
 
         return movies
@@ -51,7 +51,7 @@ class APIClient:
             if profile_path == str(None):
                 actor['profile_path'] = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
             else:
-                actor['profile_path'] = 'https://image.tmdb.org/t/p/w200' + profile_path
+                actor['profile_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + profile_path
 
             cast.append(actor)
             
@@ -59,6 +59,16 @@ class APIClient:
         director = full_url['crew'][0]
 
         return cast, director
+
+    def get_person_credits(self, person_id):
+        url = 'https://api.themoviedb.org/3/person/' + str(person_id) + '/movie_credits'
+        full_url = self.call('GET', url)
+
+        movie_ids = [movie_id['id'] for movie_id in full_url['cast']]
+
+
+        return movie_ids
+        
 
         # cast = full_url['cast']
 
