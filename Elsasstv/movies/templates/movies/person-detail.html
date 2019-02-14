@@ -47,7 +47,7 @@
 				</div>  
 				
 				<div class="content-sidebar-section">
-					<h4 class="content-sidebar-sub-header">know for:</h4>
+					<h4 class="content-sidebar-sub-header">known for:</h4>
 					<div class="content-sidebar-short-description">{{person.known_for_department}}</div>
 				</div>  
 	
@@ -108,7 +108,7 @@
 						<h2>Know for</h2>
 						<div class="row">
 
-								{% for movie in popular_movies %}
+								{% for movie in known_for %}
                 				<div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 				    <div class="item-listing-container-skrn">
                 				        <a href="/movies/{{movie.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{movie.poster_path}}" alt="Listing"></a>
