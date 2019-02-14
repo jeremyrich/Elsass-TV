@@ -49,7 +49,7 @@ class APIClient:
             profile_path = str(actor['profile_path'])
 
             if profile_path == str(None):
-                actor['profile_path'] = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+                actor['profile_path'] = None
             else:
                 actor['profile_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + profile_path
 
