@@ -14,7 +14,7 @@ def home(request):
 def detail(request, movie_id):
     """View rendering the detailed informations of a movie""" 
     movie = get_object_or_404(Movie, pk=movie_id)
-    person = APIClient().get_movie_credits(movie_id)
+    person, director = APIClient().get_movie_credits(movie_id)
     similar_movies = APIClient().get_similar_movies(movie_id)
     return render (request, 'movies/movie-detail.html', locals())
 

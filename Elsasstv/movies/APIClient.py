@@ -20,13 +20,13 @@ class APIClient:
 
         return response.json()
 
-#to get all the details of a movie
     def get_movie_details(self, movie_id):
+        """to get all the details of a movie"""
         url = 'https://api.themoviedb.org/3/movie/' + str(movie_id)
         full_url = self.call('GET', url)
         
-    # to get similar movies to the page we're on
     def get_similar_movies(self, movie_id):
+        """to get similar movies to the page we're on"""
         url = 'https://api.themoviedb.org/3/movie/' + str(movie_id) + '/similar'
         full_url = self.call('GET', url)
 
@@ -38,11 +38,12 @@ class APIClient:
         return movies
 
 
-    # to get the actors playing in a movie 
     def get_movie_credits(self, movie_id):
+        """to get the actors playing in a movie """
         url = 'https://api.themoviedb.org/3/movie/' + str(movie_id) + '/credits'
         full_url = self.call('GET', url)
 
+        #Getting the cast
         cast = []
         for actor in full_url['cast']:
             profile_path = str(actor['profile_path'])
@@ -53,7 +54,11 @@ class APIClient:
                 actor['profile_path'] = 'https://image.tmdb.org/t/p/w200' + profile_path
 
             cast.append(actor)
-        return cast
+            
+        #Getting the director
+        director = full_url['crew'][0]
+
+        return cast, director
 
         # cast = full_url['cast']
 
