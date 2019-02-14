@@ -32,8 +32,8 @@ class TestMoviesViews(TestCase):
     def setUp(self):
         self.client = Client()
 
-        Movie.objects.create(id='1', original_title='test', title='test', tagline='test', overview='overview', status='test', original_language='test')
-        Person.objects.create(id='1', imdb_id='1', name='test', gender='1')
+        Movie.objects.create(id='603', original_title='test', title='test', tagline='test', overview='overview', status='test', original_language='test')
+        Person.objects.create(id='135651', imdb_id='1', name='test', gender='1')
 
     def test_home_GET(self):
         response = self.client.get(reverse('movies:home'))
@@ -41,10 +41,12 @@ class TestMoviesViews(TestCase):
         self.assertTemplateUsed(response, 'movies/home.html')
 
     def test_detail_GET(self):
-        pass # not working ! Errors due to API call in views!
+        response = self.client.get(reverse('movies:detail',kwargs={'movie_id':603}))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'movies/movie-detail.html')
 
     def test_person_GET(self):
-        response = self.client.get(reverse('movies:person',kwargs={'person_id':1}))
+        response = self.client.get(reverse('movies:person',kwargs={'person_id':135651}))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'movies/person-detail.html')
 
@@ -129,7 +131,7 @@ class TestForms(TestCase):
 class MovieTest(TestCase):
 
     def setUp(self):       
-        self.matrix = Movie.objects.create(id=1, title="Matrix")
+        self.matrix = Movie.objects.create(id=603, title="Matrix")
         self.user = User.objects.create_user(username='testuser', password='12345')
 
     def test_home_view(self):
@@ -141,13 +143,13 @@ class MovieTest(TestCase):
     def test_has_response(self):
         """  testing if the page "detail" gives a correct http response""" 
         movie = self.matrix       
-        response = self.client.get(reverse('movies:detail', args=(movie.id,)))
+        response = self.client.get(reverse('movies:detail', kwargs={'movie_id':603}))
         self.assertEqual(response.status_code, 200)
 
     def test_has_movie_title(self):
         """ test if the page "detail" returns the right movie""" 
         movie = self.matrix       
-        response = self.client.get(reverse('movies:detail', args=(movie.id,)))
+        response = self.client.get(reverse('movies:detail', kwargs={'movie_id':603}))
         body = str(response.content)
         m = re.search(r'[M][a][t][r][i][x]', body)
         self.assertTrue(m)
