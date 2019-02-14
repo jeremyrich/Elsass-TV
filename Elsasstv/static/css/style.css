@@ -144,6 +144,10 @@ img{
     max-width:100%;
     height:auto
 }
+
+.col-12.col-md-6.col-lg-6.col-xl-4 {
+    max-width: 25%!important;
+}
 @media (min-width:576px){
     .container{
         max-width:100%
