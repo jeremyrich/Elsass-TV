@@ -26,7 +26,6 @@ def person(request, person_id):
     try: 
 
         for id in known_for_ids:
-            print(id)
             known_for.append(Movie.objects.get(pk=id))
     except:
         pass

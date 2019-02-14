@@ -132,7 +132,7 @@ ul#registration-steps-pro li.current-menu-item .registration-step-circle-icon:be
     background:#2325c2  
 }
 .btn-shadow-pro{
-    box-shadow:0 12px 28px rgba(61,177,61,.38)
+    box-shadow:0 12px 28px rgba(56, 75, 182, 0.38)
 }
 .btn-shadow-pro:hover{
     box-shadow:0 12px 28px rgba(161,161,161,.38)
