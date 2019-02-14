@@ -10,10 +10,10 @@
     </div>  
     
     
-    
+    {% if user.is_authenticated %}
     <div id="header-user-profile">
         <div id="header-user-profile-click" class="noselect">
-                 <div id="header-username">Hi{% if user.is_authenticated %}, {{user.username}}{% endif %}</div><i class="fas fa-angle-down"></i>
+                 <div id="header-username">Hi, {{user.username}}</div><i class="fas fa-angle-down"></i>
         </div>  
         <div id="header-user-profile-menu">
             <ul>
@@ -23,7 +23,8 @@
                 <li><a href="/logout"><span class="icon-Power-3"></span>Log Out</a></li>
             </ul>
         </div>  
-    </div>  
+    </div> 
+    
     
     <div id="header-user-notification">
         <div id="header-user-notification-click" class="noselect">
@@ -34,7 +35,7 @@
             <h3>Notifications</h3>
             </div>
     </div>  
-    
+    {% endif %} 
     
     
     <div class="clearfix"></div>

@@ -1,5 +1,6 @@
 import requests 
 from django.conf import settings 
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 class APIClient: 
 
@@ -49,7 +50,7 @@ class APIClient:
             profile_path = str(actor['profile_path'])
 
             if profile_path == str(None):
-                actor['profile_path'] = None
+                actor['profile_path'] = static('images/not_available.png')
             else:
                 actor['profile_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + profile_path
 
