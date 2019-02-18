@@ -40,11 +40,14 @@
 								  
 									  <h5>List of users</h5>
 										<ul>
-										{% for user in other_users %}
-
-										<li> {{user.username}} <p><a href="{% url 'accounts:friend_request' user.id%}" class="btn btn-green-pro">Send a friend request</a></p> </li>
-									
+										{% for other in other_users %}
+											{% if other.id in friend_ids %}
+												<li> {{other.username}} <p>Already a friend</p> </li>
+											{% else %}								
+												<li> {{other.username}} <p><a href="{% url 'accounts:friend_request' other.id%}" class="btn btn-green-pro">Send a friend request</a></p> </li>
+											{% endif %}									
 										{% endfor %}
+										</ul>
 
 									
 				
