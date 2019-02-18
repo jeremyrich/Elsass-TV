@@ -22,8 +22,9 @@
 		
 		{% include 'header-movie.html' %}
 
+
         <div id="sidebar-bg">
-				
+						
 			<div id="content-sidebar-pro">
 			
 				<div id="content-sidebar-image">
@@ -79,7 +80,6 @@
 				</div>  
 				
 			</div>  
-			
 			
 			<main id="col-main-with-sidebar">
 				
@@ -175,7 +175,7 @@
 						<h2>The Cast</h2>
 						<div class="row">
 
-								{% for pers in person%}
+								{% for pers in person|slice:":8"%}
 									<div class="col-12 col-md-6 col-lg-6 col-xl-4">
 										<div class="item-listing-container-skrn">
 											<a href="/movies/{{pers.id}}/person-detail"><img src="{{pers.profile_path}}" alt="Cast"></a>
@@ -194,7 +194,7 @@
 						<h2>Similar Movies</h2>
 						<div class="row">
 
-								{% for movie in similar_movies%}
+								{% for movie in similar_movies|slice:":8" %}
                 				<div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 				    <div class="item-listing-container-skrn">
                 				        <a href="/movies/{{movie.id}}/detail"><img src="{{movie.poster_path}}" alt="Listing"></a>

@@ -4,7 +4,11 @@
     <div id="video-logo-background"><a href="/"><img src="{% static 'images/logo.png' %}" alt="Logo"></a></div>
     
     <div id="video-search-header">
-        <input type="text" placeholder="Search for Movies or TV Series" aria-label="Search">
+
+        <form action="/search/" method="get">
+        <input id='q'  name='q' type="text" placeholder="Search for Movies or TV Series" aria-label="Search">
+        </form>
+        
         <div id="video-search-header-filtering">
         </div>  
     </div>  

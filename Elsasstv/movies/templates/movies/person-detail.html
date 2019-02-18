@@ -108,7 +108,7 @@
 						<h2>Known for</h2>
 						<div class="row">
 
-								{% for movie in known_for %}
+								{% for movie in known_for|slice:":8" %}
                 				<div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 				    <div class="item-listing-container-skrn">
                 				        <a href="/movies/{{movie.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{movie.poster_path}}" alt="Listing"></a>
