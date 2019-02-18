@@ -70,8 +70,3 @@ class APIClient:
 
         return movie_ids
         
-
-        # cast = full_url['cast']
-
-        # for index, actor in enumerable(cast):
-        #     cast[index]['profile_path'] = 'https://image.tmdb.org/t/p/w200' + str(actor['profile_path'])

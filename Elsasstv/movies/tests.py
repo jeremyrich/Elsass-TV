@@ -160,4 +160,4 @@ class MovieTest(TestCase):
         self.assertTrue('<div id="header-username">Hi, testuser</div>' in str(response.content))
         self.client.logout()
         response = self.client.get(reverse('movies:home'))
-        self.assertTrue('<div id="header-username">Hi</div>' in str(response.content))
+        self.assertFalse('<div id="header-username">Hi, testuser</div>' in str(response.content))
