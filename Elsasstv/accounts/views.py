@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from accounts.get_friends import get_notif, get_friends
 from django.http import HttpResponseRedirect
 from accounts.models import UserCustom, Friendship
+from search.documents import UserDocument
 from movies.models import Movie, Person
 
 
@@ -15,12 +16,22 @@ def profile(request):
     """View rendering the details informations of a user"""
     current_user = request.user
     popular_movies = Movie.objects.order_by('-popularity')[:10]
+
     #Getting the friends
     friends = get_friends(current_user)
     nb_friends = len(friends)
     #Getting the requests for the notifications
     friend_requests = get_notif(current_user)   
     nb_requests = len(friend_requests)           
+
+
+    u = request.GET.get('u')
+    if u:
+        search = UserDocument.search().query("match", username=u)[:100]
+
+    else:
+        search = ''
+
     return render(request, 'accounts/profile.html', locals())
 
 
