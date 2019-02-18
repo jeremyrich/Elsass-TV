@@ -23,6 +23,6 @@ class Friendship(models.Model):
     """
     source_user = models.ForeignKey(UserCustom, on_delete=models.CASCADE)
     target_user = models.ForeignKey(UserCustom, on_delete=models.CASCADE, related_name='target_user')
-    status = models.IntegerField(null=True) 
+    status = models.IntegerField(null=True)
         
 
