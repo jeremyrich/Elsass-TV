@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        
+        {% block css %}{% endblock %} 
+
+        {% block head %}
+        <title>Elasstv - movie</title>
+        {% endblock %}
+
+    </head>
+
+
+    <body id="page-top">
+
+		{% block body %}
+		
+		{% include 'header-movie.html' %}
+
+        <div id="sidebar-bg">
+				  
+				  <main id="col-main">
+					  
+					  <div class="dashboard-container">
+						  
+						  <ul class="dashboard-sub-menu">
+							  <li class="current"><a href="dashboard-account.html">List of other users</a></li>
+						  </ul><!-- close .dashboard-sub-menu -->
+						  
+						  <div class="container-fluid">
+							  <div class="row">
+							  
+								  
+									  <form class="account-settings-form">
+								  
+									  <h5>List of users</h5>
+										<ul>
+										{% for user in other_users %}
+
+										<li> {{user.username}} <p><a href="{% url 'accounts:friend_request' user.id%}" class="btn btn-green-pro">Send a friend request</a></p> </li>
+									
+										{% endfor %}
+
+									
+				
+							  
+							  </div><!-- close .row -->
+						  </div><!-- close .container-fluid -->
+								  
+					  </div><!-- close .dashboard-container -->
+				  </main>
+				  
+				  
+				  </div><!-- close #sidebar-bg-->
+				  
+    	{% endblock %}
+
+        {% block pre-footer %}
+    
+    	{% endblock %}
+
+        {% include 'footer.html' %}
+
+    </body>
+
+
+</html>
