@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from movies.models import Movie, Person
+from movies.models import Movie, Person, Favorite
 from movies.APIClient import APIClient
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -46,3 +46,12 @@ def person(request, person_id):
         nb_requests = len(friend_requests)        
     return render(request, 'movies/person-detail.html', locals())
 
+def create_favorite(request, movie, user):
+    """allows the user to add a favorite"""
+    HasFavorite.objects.get_or_create(user = current_user, movie = movie_clicked_on)
+    
+
+#def remove_favorite(request, movie_id, person_id):
+
+
+#def view_favorite(request, movie_id, person_id):

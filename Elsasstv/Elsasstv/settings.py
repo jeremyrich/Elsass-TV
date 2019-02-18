@@ -98,8 +98,8 @@ DATABASES = {'default': {
 							'NAME': 'Elsasstv',
 							'USER': 'root',
 							'PASSWORD' : db_password,
-							'HOST' : 'localhost',
-							'PORT': '3306',
+							'HOST' : '/Applications/MAMP/tmp/mysql/mysql.sock',
+							'PORT': '8889',
 			}} 
 
 

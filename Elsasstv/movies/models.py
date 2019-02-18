@@ -1,4 +1,6 @@
-from django.db import models
+from django.db import models 
+from accounts.models import Usercustom
+
 
 class Movie(models.Model):
 
@@ -19,6 +21,7 @@ class Movie(models.Model):
     revenue = models.BigIntegerField(null=True)   
     vote_average = models.FloatField(null=True)
     vote_count = models.IntegerField(null=True)
+    users = models.ManyToManyField(Usercustom, through"Favorite")
     
     
 class Person(models.Model):
@@ -34,6 +37,13 @@ class Person(models.Model):
     biography = models.TextField(null=True) 
     popularity = models.FloatField(null=True) 
     profile_path = models.CharField(max_length=200,null=True)
+
+class Favorite(models.Model):
+    
+    id = models.IntegerField(primary_key=True)
+    usercustom = models.ForeignKey(Usercustom, on_delete=models.PROTECT)
+    movie = models.ForeignKey(Movie, on_delete=models.PROTECT)
+  
 
     
 
