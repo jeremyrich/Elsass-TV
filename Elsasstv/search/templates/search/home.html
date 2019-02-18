@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        
+        {% block css %}{% endblock %} 
+
+        {% block head %}
+        <title>Elasstv - movie</title>
+        {% endblock %}
+
+    </head>
+
+
+    <body id="page-top">
+
+		{% block body %}
+		
+		{% include 'header-movie.html' %}
+
+        <div id="sidebar-bg">
+				
+				<main id="col-main">
+
+					<div class="clearfix"></div>
+					
+					<div class="dashboard-container">
+
+						<br>
+							<h4 class="heading-extra-margin-bottom">Search Movie</h4>
+
+							<h5 class="heading-extra-margin-bottom">{{search.count}} movies found :</h5>
+
+							<div class="row">
+								{% for mov in search%}
+									<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+											<div class="item-listing-container-skrn">
+													<a href="/movies/{{mov.id}}/detail"><img src="{{mov.poster_path}}" alt="Listing"></a>
+													<div class="item-listing-text-skrn">
+															<div class="item-listing-text-skrn-vertical-align"><h6><a href="/movies/{{mov.id}}/detail">{{mov.title}}</a></h6>
+																<div
+																	class="circle-rating-pro"
+																	data-value="0.86"
+																	data-animation-start-value="0.86"
+																	data-size="32"
+																	data-thickness="3"
+																	data-fill="{
+																		&quot;color&quot;: &quot;#2325c2  &quot;
+																	}"
+																	data-empty-fill="#def6de"
+																	data-reverse="true"
+																><span style="color:#2325c2  ;">{{mov.vote_average}}</span></div>
+															</div>  
+													</div>  
+											</div>  
+									</div>  
+								{% endfor %} 
+								<ul>
+							</div>  
+						
+					</div>  
+				</main>
+				
+				
+				</div>  
+    	{% endblock %}
+
+        {% block pre-footer %}
+    
+    	{% endblock %}
+
+        {% include 'footer.html' %}
+
+    </body>
+
+
+</html>

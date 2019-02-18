@@ -46,7 +46,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'movies',
     'accounts',
+    'django_elasticsearch_dsl',
+    'search',
 ]
+
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
