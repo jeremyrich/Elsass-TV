@@ -29,11 +29,17 @@
     <div id="header-user-notification">
         <div id="header-user-notification-click" class="noselect">
             <i class="far fa-bell"></i>
-            <span class="user-notification-count">3</span>
+            <span class="user-notification-count">{{ nb_requests }}</span>
         </div>  
         <div id="header-user-notification-menu">
             <h3>Notifications</h3>
+            <ul>
+            {% for friendship in friend_requests %}
+            <li>{{ friendship.source_user.user.username }} wants to be friend <a href="{% url 'accounts:accept_or_refuse' friendship.id 1 %}" class="btn btn-green-pro">Accept</a>  <a href="{% url 'accounts:accept_or_refuse' friendship.id 2 %}" class="btn btn-green-pro">Refuse</a></li>            
+            {% endfor %}
+            </ul>
             </div>
+            
     </div>  
     {% endif %} 
     
