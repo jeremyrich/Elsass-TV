@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from accounts.get_friends import get_notif, get_friends
 from django.http import HttpResponseRedirect
 from accounts.models import UserCustom, Friendship
+from search.documents import UserDocument
 from movies.models import Movie, Person
 
 
@@ -15,12 +16,22 @@ def profile(request):
     """View rendering the details informations of a user"""
     current_user = request.user
     popular_movies = Movie.objects.order_by('-popularity')[:10]
+
     #Getting the friends
     friends = get_friends(current_user)
     nb_friends = len(friends)
     #Getting the requests for the notifications
     friend_requests = get_notif(current_user)   
     nb_requests = len(friend_requests)           
+
+
+    u = request.GET.get('u')
+    if u:
+        search = UserDocument.search().query("match", username=u)[:100]
+
+    else:
+        search = ''
+
     return render(request, 'accounts/profile.html', locals())
 
 
@@ -61,6 +72,29 @@ def accept_or_refuse(request, friendship_id, status):
         friendship.status = 2
         friendship.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER')) # Staying on the same page
+
+@login_required
+def delete_friend(request, friend_id):
+    friend = User.objects.get(id=friend_id)
+    current_user = request.user
+    try:
+        friendship1 = Friendship.objects.get(source_user=friend.usercustom, target_user=current_user.usercustom, status=1)
+        if friendship1:
+            friendship1.status = 2
+            friendship1.save()
+    except:
+        pass
+    try:
+        friendship2 = Friendship.objects.get(source_user=current_user.usercustom, target_user=friend.usercustom, status=1)    
+        if friendship2:
+            friendship2.status = 2
+            friendship2.save()
+    except:
+        pass
+    
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER')) # Staying on the same page
+
+    
 
 
 
