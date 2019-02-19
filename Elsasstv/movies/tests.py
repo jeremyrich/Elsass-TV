@@ -1,16 +1,12 @@
 from django.test import TestCase, SimpleTestCase, Client
 from django.contrib.auth.models import User
 from django.urls import reverse, resolve
-from django.http import HttpRequest  
 
 import re 
-import json
 from Elsasstv.forms import RegisterForm, UserForm
 from .models import Movie, Person
 from .views import detail, home, person
 from accounts.views import profile, settings
-from movies.APIClient import APIClient
-
 
 
 class TestMoviesUrls(SimpleTestCase):
