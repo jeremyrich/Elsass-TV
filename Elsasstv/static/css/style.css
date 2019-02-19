@@ -2778,7 +2778,8 @@ ul.welcome-features li:before{
     color:#aaa
 }
 footer#footer-pro{
-    border-top:1px solid rgba(0,0,0,.09)
+    border-top:1px solid rgba(0,0,0,.09);
+    background-color: #fff;
 }
 .copyright-text-pro{
     font-size:14px;

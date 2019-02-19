@@ -41,6 +41,10 @@ def profile(request):
 
 @login_required
 def settings(request):
+    """Displays all informations of the current user + modifications forms"""
+    # Getting the requests for the notifications
+    friend_requests = get_notif(request.user) 
+    nb_requests = len(friend_requests)
     return render(request, 'accounts/settings.html', locals())
 
 @login_required
@@ -108,6 +112,9 @@ def friend_infos(request, friend_id):
     """Displays all the informations of a friend"""
     friend = User.objects.get(id=friend_id)
     popular_movies = Movie.objects.order_by('-popularity')[:10]
+    # Getting the requests for the notifications
+    friend_requests = get_notif(request.user) 
+    nb_requests = len(friend_requests)
     return render(request, 'accounts/friend_infos.html', locals())     
 
 
