@@ -12,7 +12,6 @@ from search.documents import UserDocument
 from movies.models import Movie, Person
 
 
-
 @login_required
 def profile(request):
     """View rendering the details informations of a user"""
