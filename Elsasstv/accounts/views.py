@@ -20,10 +20,8 @@ def profile(request):
     popular_movies = Movie.objects.order_by('-popularity')[:10]
 
     #Getting the friends
-    all_friends = get_friends(current_user)
-    nb_friends = len(all_friends)
-
-    friends = get_friends(request.user)
+    friends = get_friends(current_user)
+    nb_friends = len(friends)
     friend_ids = [friend.id for friend in friends]
     other_users = User.objects.exclude(Q(id=request.user.id) | Q(id=1)) 
     
