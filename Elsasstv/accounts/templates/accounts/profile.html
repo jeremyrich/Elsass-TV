@@ -39,7 +39,7 @@
 							<h3 class="content-sidebar-sub-header">Friend{{ nb_friends|pluralize }}: {{ nb_friends }}</h3>
 							<ul id="friends-activity-profiles">
 
-									{% for friend in all_friends%}
+									{% for friend in friends%}
 											<li><a href="{% url 'accounts:friend_infos' friend.id %}">
 												<figure>
 													<img src="{% static 'images/user-profile-2.jpg' %}" alt="{{ friend.username }}"><figcaption> {{ friend.username }} </figcaption> </figure> </a></li>
