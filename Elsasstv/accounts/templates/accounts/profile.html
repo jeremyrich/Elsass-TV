@@ -137,7 +137,13 @@
 
 									  </div>
 									  <div id="friends" class="container tab-pane fade"><br>
+											<form method="get">
+												<input id='u'  name='u' type="text" placeholder="Search for a friend" aria-label="Search">
+												</form>
 
+												{% for user in search%}
+													<p>{{user.username}}</p>
+												{% endfor %}
 										<p>
 											<ul>
 												{% for friend in friends%}
