@@ -16,6 +16,11 @@ body,input,select,textarea{
     font-size:15px
 }
 
+#friends{
+
+    min-height: 70vh;
+}
+
 
 ul#friends-activity-profiles li img {
     margin-left: 15%;
