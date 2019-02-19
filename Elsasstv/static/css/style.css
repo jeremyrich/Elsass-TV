@@ -16,6 +16,142 @@ body,input,select,textarea{
     font-size:15px
 }
 
+
+ul#friends-activity-profiles li img {
+    margin-left: 15%;
+}
+
+.lookup-friend-side {
+    margin-right: 50px;}
+
+#friends-activity-feed\ friends-activity-feed2{
+    list-style:none;
+    margin:0;
+    padding:0
+}
+#friends-activity-feed\ friends-activity-feed2 li{
+    line-height:1.4;
+    position:relative;
+    font-size:13px;
+    color:#333;
+    margin:0 0 0 0px;
+    padding:0 0 30px 25px;
+}
+
+
+ul#friends-activity-profiles, ul#profile-favorite-genres  {
+    min-height: 75px;
+}
+
+.btn.btn-accept.button-notif{
+    
+    border-color: #1eb60a;
+    background: #1eb60a;
+    color:#fff!important;
+}
+
+.btn.btn-refuse.button-notif{
+    
+    border-color: #b61e0a;
+    background: #b61e0a;
+    color:#fff!important;
+}
+
+.btn.btn-delete{
+    
+    border-color: #b61e0a;
+    background: #b61e0a;
+    color:#fff!important;
+    margin: 10px;
+    padding:5px;
+}
+
+.btn.btn-delete:hover{
+    
+    border-color: #b61e0a;
+    background: #fff;
+    color:#b61e0a!important;
+}
+
+.btn.btn-send{
+    
+    border-color: #0a24b6;
+    background: #0a24b6;
+    color:#fff!important;
+    margin: 10px;
+    padding:5px;
+}
+
+.btn.btn-send:hover{
+    
+    border-color: #0a24b6;
+    background: #fff;
+    color:#0a24b6!important;
+}
+
+.a-friend{
+
+    color:#000 ;
+
+}
+
+.a-friend:hover{
+
+    color:#2325c2 ;
+
+}
+
+.btn.btn-accept.button-notif:hover{
+    
+    border-color: #1eb60a;
+    background: #fff;
+    color:#1eb60a!important;
+}
+
+.btn.btn-refuse.button-notif:hover{
+    
+    border-color: #b61e0a;
+    background: #fff;
+    color:#b61e0a!important;
+}
+
+figcaption {
+    color: #000;
+}
+
+.notify-button.row {
+
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-top: 10px;
+    padding-left: 85px;
+    padding-bottom: 10px;
+
+
+}
+.notify-button-side.row {
+
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+
+
+}
+
+.notif.col-xs-6 {
+
+    margin: 0 3px;
+
+}
+
+.button-notif {
+
+    padding: 5px 10px 5px 10px !important;
+
+}
+
 #person-detail-header-pro {
     width: 100%;
     overflow: hidden;
@@ -857,7 +993,7 @@ span.user-notification-count{
 }
 #header-user-notification-list li .header-user-notify-time{
     display:block;
-    color:#bbb;
+    color:rgb(255, 255, 255);
     padding-top:5px;
     font-size:11px
 }

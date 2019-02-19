@@ -40,6 +40,7 @@ class UserDocument(DocType):
 
 
         fields = [
+            'id',
             'username',
             'first_name',
             'last_name',

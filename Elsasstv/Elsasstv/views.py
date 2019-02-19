@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from movies.models import Movie
 from django.contrib.auth import login, authenticate
+
+from movies.models import Movie
 from .forms import RegisterForm, UserForm
-from accounts.models import UserCustom, Friendship
+from accounts.models import UserCustom
 
 def home(request):
     """View rendering the 100th more popular movies. Login and registration are managed from this
