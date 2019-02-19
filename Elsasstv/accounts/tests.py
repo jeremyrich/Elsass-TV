@@ -15,6 +15,7 @@ class TestViews(TestCase):
     def test_friend_request(self):
         self.client.login(username='test1', password='Test123456')
         response = self.client.get(reverse('accounts:friend_request', kwargs={'friend_id':2}))
+        self.assertEquals(response.status_code, 302)
         friendship = Friendship.objects.get(source_user=self.user_custom_1, target_user=self.user_custom_2)
         self.assertEquals(friendship.status, 0)
 
@@ -22,6 +23,7 @@ class TestViews(TestCase):
         self.client.login(username='test2', password='Test123456')
         friendship = Friendship.objects.create(id=1, source_user=self.user_custom_1, target_user=self.user_custom_2, status=0)
         response = self.client.get(reverse('accounts:accept_or_refuse', kwargs={'friendship_id':1, 'status':1}))
+        self.assertEquals(response.status_code, 302)
         friendship = Friendship.objects.get(source_user=self.user_custom_1, target_user=self.user_custom_2)
         self.assertEquals(friendship.status, 1)
     
@@ -29,6 +31,7 @@ class TestViews(TestCase):
         self.client.login(username='test2', password='Test123456')
         friendship = Friendship.objects.create(id=1, source_user=self.user_custom_1, target_user=self.user_custom_2, status=0)
         response = self.client.get(reverse('accounts:accept_or_refuse', kwargs={'friendship_id':1, 'status':2}))
+        self.assertEquals(response.status_code, 302)
         friendship = Friendship.objects.get(source_user=self.user_custom_1, target_user=self.user_custom_2)
         self.assertEquals(friendship.status, 2)
     
@@ -37,6 +40,7 @@ class TestViews(TestCase):
         friendship1 = Friendship.objects.create(id=1, source_user=self.user_custom_1, target_user=self.user_custom_2, status=1)
         friendship2 = Friendship.objects.create(id=2, source_user=self.user_custom_2, target_user=self.user_custom_1, status=1)
         response = self.client.get(reverse('accounts:delete_friend', kwargs={'friend_id':1}))
+        self.assertEquals(response.status_code, 302)
         friendship1 = Friendship.objects.get(source_user=self.user_custom_1, target_user=self.user_custom_2)
         friendship2 = Friendship.objects.get(source_user=self.user_custom_2, target_user=self.user_custom_1)
         self.assertEquals(friendship1.status, 2)
