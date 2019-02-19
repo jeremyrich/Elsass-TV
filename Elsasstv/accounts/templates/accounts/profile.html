@@ -37,44 +37,77 @@
 						
 						<div class="content-sidebar-section">
 							<h3 class="content-sidebar-sub-header">Friend{{ nb_friends|pluralize }}: {{ nb_friends }}</h3>
+							<ul id="friends-activity-profiles">
+
+									{% for friend in all_friends%}
+											<li><a href="{% url 'accounts:friend_infos' friend.id %}">
+												<figure>
+													<img src="{% static 'images/user-profile-2.jpg' %}" alt="{{ friend.username }}"><figcaption> {{ friend.username }} </figcaption> </figure> </a></li>
+									{% endfor %}	
+								
+								</ul>
 							
+							<div class="lookup-friend-side"> <a data-toggle="tab" href="#friends" class="btn btn-green-pro">Look for a friend!</a>
+							</div>
 							<div class="clearfix"></div>
-							<p><a href="{% url 'accounts:list_users' %}" class="btn btn-green-pro">Look for a friend!</a></p>
-						</div><!-- close .content-sidebar-section -->
+							</div>
 						
 						<div class="content-sidebar-section">
-							<h3 class="content-sidebar-sub-header">Friends Activity</h3>
+							<h3 class="content-sidebar-sub-header">Friends Notifications</h3>
 							<ul id="friends-activity-feed">
-								<li><img src="images/demo/user-15.jpg" alt="Friend">Added <a href="#!">Interstellar</a> to her Favorite Playlist</li>
-								<li><img src="images/demo/user-8.jpg" alt="Friend">Wants to Watch <a href="#!">The Imitation Game</a></li>
-								<li><img src="images/demo/user-9.jpg" alt="Friend">Added <a href="#!">Moonlight</a> to his <a href="#!">Playlist Best Dramas</a></li>
-								<li><img src="images/demo/user-4.jpg" alt="Friend">Watched <a href="#!">Transformers: The Last Knight</a></li>
-							</ul>
+									{% for friendship in friend_requests %}
+									<li>
+											
+											<a>
+											<img src="{% static 'images/user-profile-2.jpg' %}" alt="Profile">
+											<strong>{{ friendship.source_user.user.username }}</strong> wants to be your friend  </a>
+
+											<div class="notify-button-side row">
+													<div class="notif col-xs-6">
+													<a href="{% url 'accounts:accept_or_refuse' friendship.id 1 %}" class="btn btn-accept button-notif">Accept</a> </div>
+													<div class="notif col-xs-6">
+													 <a href="{% url 'accounts:accept_or_refuse' friendship.id 2 %}" class="btn btn-refuse button-notif">Refuse</a></div>
+													</div>
+									</li>
+									{% endfor %}</ul></ul>
 							<div class="clearfix"></div>
-						</div><!-- close .content-sidebar-section -->
+						</div>
 						
 						
-					</div><!-- close #content-sidebar-pro -->
+					</div>
 				
 					<main id="col-main-with-sidebar">
 							<div class="dashboard-container">
 									<!-- Nav tabs -->
-
+									
 									<ul class="dashboard-sub-menu nav nav-tabs" role="tablist">
 									  <li class="nav-item">
+										{% if u is None %}
 										<a class="nav-link active" data-toggle="tab" href="#favorites">Favorites</a>
+										{% else %}
+										<a class="nav-link" data-toggle="tab" href="#favorites">Favorites</a>
+										{% endif%}
 									  </li>
 									  <li class="nav-item">
 										<a class="nav-link" data-toggle="tab" href="#watchlist">Watchlist</a>
 									  </li>
 									  <li class="nav-item">
+										{% if u is None %}
 										<a class="nav-link" data-toggle="tab" href="#friends">Friends</a>
+										{% else %}
+										<a class="nav-link active" data-toggle="tab" href="#friends">Friends</a>
+										{% endif%}
 										</li>
 									</ul>
-								  
+									
+
 									<!-- Tab panes -->
 									<div class="tab-content">
-									  <div id="favorites" class="container tab-pane active"><br>
+											{% if u is None %}
+										<div id="favorites" class="container tab-pane active"><br>
+											{% else %}
+											<div id="favorites" class="container tab-pane fade"><br>
+											{% endif%}
 
 										<div class="row">
 												{% for mov in popular_movies%}
@@ -101,7 +134,7 @@
                 									</div>  
 												{% endfor %} 
 												
-											</div><!-- close .row -->
+											</div>
 
 									  </div>
 
@@ -133,32 +166,64 @@
                 									</div>  
 												{% endfor %} 
 												
-											</div><!-- close .row -->
+											</div>
 
-									  </div>
-									  <div id="friends" class="container tab-pane fade"><br>
-											<form method="get">
-												<input id='u'  name='u' type="text" placeholder="Search for a friend" aria-label="Search">
-												</form>
+										</div>
+										{% if u is None %}
+										<div id="friends" class="container tab-pane">
+												{% else %}
+												<div id="friends" class="container tab-pane active">
+														{% endif%}
+											
+											<br>
+											<div class="row row-eq-height">
 
-												{% for user in search%}
-													<p>{{user.username}}</p>
-												{% endfor %}
-										<p>
-											<ul>
-												{% for friend in friends%}
-												<li>
-												<a href="{% url 'accounts:friend_infos' friend.id %}">{{ friend.username }}</a>
-												<a href="{% url 'accounts:delete_friend' friend.id %}" class="btn btn-green-pro">Delete this friend</a></li>
-												{% endfor %}
-											</ul>
-										</p>
+												<div class="col-sm-3 col-md-6 friend-list-col">
+
+													
+														<h5>List of friends :</h5>
+
+								  
+																<ul style="list-style: none;">
+																{% for other in other_users %}
+																	{% if other.id in friend_ids %}
+																		<li> <a href="{% url 'accounts:friend_infos' other.id %}" class="a-friend">{{other.username}}</a> 
+																			<a href="{% url 'accounts:delete_friend' other.id %}" class="btn btn-delete">Delete this friend</a>
+																			</li>
+																	{% else %}								
+																		<li> <a href="{% url 'accounts:friend_infos' other.id %}" class="a-friend">{{other.username}}</a>
+																		<a href="{% url 'accounts:friend_request' other.id%}" class="btn btn-send">Send a friend request</a>
+																		</li>
+																	{% endif %}									
+																{% endfor %}
+																</ul>
+						
+											</div>
+
+											<div class="col-sm-3 col-md-6">
+												
+													<h5>Find a friend :</h5>
+													<form method="get">
+														<input id='u'  name='u' type="text" placeholder="Enter the username" aria-label="Search">
+														</form>
+														<br>
+														{% if u is None %}
+														{% else %}
+														<h5>Search result:</h5>
+														{% endif%}
+
+														{% for user in search%}
+														<a href="" class="a-friend">{{ user.username }}{{user.id}}</a>
+														{% endfor %}
+
+												</div>
 
 
-									  </div>
+										</div>
+										
 									</div>
 							
-						</div><!-- close .dashboard-container -->
+						</div>
 					
 			
 			

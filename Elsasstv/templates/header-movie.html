@@ -37,11 +37,25 @@
         </div>  
         <div id="header-user-notification-menu">
             <h3>Notifications</h3>
-            <ul>
-            {% for friendship in friend_requests %}
-            <li>{{ friendship.source_user.user.username }} wants to be friend <a href="{% url 'accounts:accept_or_refuse' friendship.id 1 %}" class="btn btn-green-pro">Accept</a>  <a href="{% url 'accounts:accept_or_refuse' friendship.id 2 %}" class="btn btn-green-pro">Refuse</a></li>            
-            {% endfor %}
-            </ul>
+            <div id="header-notification-menu-padding">
+                <ul id="header-user-notification-list">
+                    {% for friendship in friend_requests %}
+                    <li>
+                        
+                        <a>
+                        <img src="{% static 'images/user-profile-2.jpg' %}" alt="Profile">
+                        <strong>{{ friendship.source_user.user.username }}</strong> wants to be your friend  </a>
+
+                        <div class="notify-button row">
+                            <div class="notif col-xs-6">
+                            <a href="{% url 'accounts:accept_or_refuse' friendship.id 1 %}" class="btn btn-accept button-notif">Accept</a> </div>
+                            <div class="notif col-xs-6">
+                             <a href="{% url 'accounts:accept_or_refuse' friendship.id 2 %}" class="btn btn-refuse button-notif">Refuse</a></div>
+                            </div>
+                    </li>
+                    {% endfor %}</ul>
+                <div class="clearfix"></div>
+            </div>
             </div>
             
     </div>  

@@ -20,13 +20,18 @@ def profile(request):
     popular_movies = Movie.objects.order_by('-popularity')[:10]
 
     #Getting the friends
-    friends = get_friends(current_user)
-    nb_friends = len(friends)
-    #Getting the requests for the notifications
-    friend_requests = get_notif(current_user)   
-    nb_requests = len(friend_requests)           
+    all_friends = get_friends(current_user)
+    nb_friends = len(all_friends)
 
+    friends = get_friends(request.user)
+    friend_ids = [friend.id for friend in friends]
+    other_users = User.objects.exclude(Q(id=request.user.id) | Q(id=1)) 
+    
+    # Getting the requests for the notifications
+    friend_requests = get_notif(request.user) 
+    nb_requests = len(friend_requests)
 
+    #search bar for username
     u = request.GET.get('u')
     if u:
         search = UserDocument.search().query("match", username=u)[:100]
@@ -104,6 +109,7 @@ def delete_friend(request, friend_id):
 def friend_infos(request, friend_id):
     """Displays all the informations of a friend"""
     friend = User.objects.get(id=friend_id)
+    popular_movies = Movie.objects.order_by('-popularity')[:10]
     return render(request, 'accounts/friend_infos.html', locals())     
 
 
