@@ -1,11 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+
 from movies.models import Movie, Person
 from movies.APIClient import APIClient
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
 from accounts.get_friends import get_notif
-
-
 
 
 def home(request):

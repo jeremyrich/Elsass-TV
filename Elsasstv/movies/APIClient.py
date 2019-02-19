@@ -2,6 +2,7 @@ import requests
 from django.conf import settings 
 from django.contrib.staticfiles.templatetags.staticfiles import static
 
+
 class APIClient: 
 
     def __init__(self):

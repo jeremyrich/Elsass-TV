@@ -1,14 +1,16 @@
-
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
-from accounts.get_friends import get_notif, get_friends
 from django.http import HttpResponseRedirect
+from django.core.exceptions import ObjectDoesNotExist
+
+from accounts.get_friends import get_notif, get_friends
 from accounts.models import UserCustom, Friendship
+
 from search.documents import UserDocument
 from movies.models import Movie, Person
+
 
 
 @login_required
@@ -34,7 +36,6 @@ def profile(request):
 
     return render(request, 'accounts/profile.html', locals())
 
-
 @login_required
 def settings(request):
     return render(request, 'accounts/settings.html', locals())
@@ -45,6 +46,9 @@ def list_users(request):
     friends = get_friends(request.user)
     friend_ids = [friend.id for friend in friends]
     other_users = User.objects.exclude(Q(id=request.user.id) | Q(id=1)) 
+    # Getting the requests for the notifications
+    friend_requests = get_notif(request.user) 
+    nb_requests = len(friend_requests)
     return render(request, 'accounts/list_users.html', locals())
 
 @login_required
@@ -75,31 +79,31 @@ def accept_or_refuse(request, friendship_id, status):
 
 @login_required
 def delete_friend(request, friend_id):
+    """Deletes a friend by looking for the corresponding relationship(s) and setting its status to 2"""
     friend = User.objects.get(id=friend_id)
-    current_user = request.user
+    current_user = request.user 
+    #Friendship where the current_user is the target   
     try:
         friendship1 = Friendship.objects.get(source_user=friend.usercustom, target_user=current_user.usercustom, status=1)
         if friendship1:
             friendship1.status = 2
             friendship1.save()
-    except:
+    except ObjectDoesNotExist:
         pass
+    #Friendship where the current_user is the source
     try:
         friendship2 = Friendship.objects.get(source_user=current_user.usercustom, target_user=friend.usercustom, status=1)    
         if friendship2:
             friendship2.status = 2
             friendship2.save()
-    except:
+    except ObjectDoesNotExist:
         pass
-    
     return HttpResponseRedirect(request.META.get('HTTP_REFERER')) # Staying on the same page
-
     
-
-
-
-
-
-        
+@login_required
+def friend_infos(request, friend_id):
+    """Displays all the informations of a friend"""
+    friend = User.objects.get(id=friend_id)
+    return render(request, 'accounts/friend_infos.html', locals())     
 
 

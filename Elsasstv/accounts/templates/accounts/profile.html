@@ -147,8 +147,9 @@
 										<p>
 											<ul>
 												{% for friend in friends%}
-												<li>{{ friend.username }}</li>
-												<a href="{% url 'accounts:delete_friend' friend.id %}" class="btn btn-green-pro">Delete this friend</a>
+												<li>
+												<a href="{% url 'accounts:friend_infos' friend.id %}">{{ friend.username }}</a>
+												<a href="{% url 'accounts:delete_friend' friend.id %}" class="btn btn-green-pro">Delete this friend</a></li>
 												{% endfor %}
 											</ul>
 										</p>
