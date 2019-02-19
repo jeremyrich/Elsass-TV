@@ -23,36 +23,129 @@
 		{% include 'header-movie.html' %}
 
         <div id="sidebar-bg">
-				  
-				  <main id="col-main">
-					  
-					  <div class="dashboard-container">
-						 
-						  
-						  <div class="container-fluid">
-							  <div class="row">
-							  
-								  
-									  <form class="account-settings-form">
-								  
-									  <h5>{{ friend.username }} informations</h5>
-									  <ul>
-									  	<li>Last time logged: {{ friend.last_login }}</li>
-									  	<li>First name: {{ friend.first_name }}</li>
-									  	<li>Last name: {{ friend.last_name }}</li>
- 									  	<li>email: {{ friend.email }}</li>
-									  	<li>Joined since the: {{ friend.date_joined }}
-									  </ul>									
+					<div id="content-sidebar-pro">
+			
+						<div id="content-sidebar-info">
+							<img src="{% static 'accounts/images/profile-image-sidebar.jpg' %}" alt="profile-image">
+							<div id="profile-sidebar-name">
+								<h6>Username :</h6>
+								<h5>{{friend.username}}</h5>
+							</div>
+							<div id="profile-sidebar-gradient"></div>
+						</div>
+						
+						<div class="content-sidebar-section">
+							<h3 class="content-sidebar-sub-header">Informations</h3>
+							<ul id="friends-activity-feed friends-activity-feed2">
+
+									<li>First name: {{ friend.first_name }}</li>
+									<li>Last name: {{ friend.last_name }}</li>
+ 									<li>email: {{ friend.email }}</li>
+								
+								</ul>
+							
+							<div class="clearfix"></div>
+							</div>
+						
+							<div class="content-sidebar-section">
+									<h3 class="content-sidebar-sub-header">Activity</h3>
+									<ul id="friends-activity-feed">
+										<li>Last time logged: {{ friend.last_login }}</li>
+										<li>Joined since the: {{ friend.date_joined }}</li>
+									<div class="clearfix"></div>
+								</div>
+
+						
+						
+					</div>
 				
-							  </div><!-- close .row -->
-						  </div><!-- close .container-fluid -->
+					<main id="col-main-with-sidebar">
+							<div class="dashboard-container">
+									<!-- Nav tabs -->
+
+									<ul class="dashboard-sub-menu nav nav-tabs" role="tablist">
+									  <li class="nav-item">
+										<a class="nav-link active" data-toggle="tab" href="#favorites">Favorites</a>
+									  </li>
+									  <li class="nav-item">
+										<a class="nav-link" data-toggle="tab" href="#watchlist">Watchlist</a>
+									  </li>
+									</ul>
 								  
-					  </div><!-- close .dashboard-container -->
-				  </main>
-				  
-				  
-				  </div><!-- close #sidebar-bg-->
-				  
+									<!-- Tab panes -->
+									<div class="tab-content">
+									  <div id="favorites" class="container tab-pane active"><br>
+
+										<div class="row">
+												{% for mov in popular_movies%}
+                									<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                									    <div class="item-listing-container-skrn">
+                									        <a href="/movies/{{mov.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{mov.poster_path}}" alt="Listing"></a>
+                									        <div class="item-listing-text-skrn">
+                									            <div class="item-listing-text-skrn-vertical-align"><h6><a href="/movies/{{mov.id}}/detail">{{mov.title}}</a></h6>
+                									              <div
+                									                class="circle-rating-pro"
+                									                data-value="0.86"
+                									                data-animation-start-value="0.86"
+                									                data-size="32"
+                									                data-thickness="3"
+                									                data-fill="{
+                									                  &quot;color&quot;: &quot;#2325c2  &quot;
+                									                }"
+                									                data-empty-fill="#def6de"
+                									                data-reverse="true"
+                									              ><span style="color:#2325c2  ;">{{mov.vote_average}}</span></div>
+                									            </div>  
+                									        </div>  
+                									    </div>  
+                									</div>  
+												{% endfor %} 
+												
+											</div>
+
+									  </div>
+
+									  <div id="watchlist" class="container tab-pane fade"><br>
+
+
+										<div class="row">
+												{% for mov in popular_movies%}
+                									<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                									    <div class="item-listing-container-skrn">
+                									        <a href="/movies/{{mov.id}}/detail"><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{mov.poster_path}}" alt="Listing"></a>
+                									        <div class="item-listing-text-skrn">
+                									            <div class="item-listing-text-skrn-vertical-align"><h6><a href="/movies/{{mov.id}}/detail">{{mov.title}}</a></h6>
+                									              <div
+                									                class="circle-rating-pro"
+                									                data-value="0.86"
+                									                data-animation-start-value="0.86"
+                									                data-size="32"
+                									                data-thickness="3"
+                									                data-fill="{
+                									                  &quot;color&quot;: &quot;#2325c2  &quot;
+                									                }"
+                									                data-empty-fill="#def6de"
+                									                data-reverse="true"
+                									              ><span style="color:#2325c2  ;">{{mov.vote_average}}</span></div>
+                									            </div>  
+                									        </div>  
+                									    </div>  
+                									</div>  
+												{% endfor %} 
+												
+											</div>
+
+									  </div>
+									</div>
+							
+						</div>
+					
+			
+			
+				</main>
+			
+					
+				</div>  
     	{% endblock %}
 
         {% block pre-footer %}
