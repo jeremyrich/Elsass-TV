@@ -45,6 +45,7 @@ def settings(request):
     # Getting the requests for the notifications
     friend_requests = get_notif(request.user) 
     nb_requests = len(friend_requests)
+
     return render(request, 'accounts/settings.html', locals())
 
 @login_required
