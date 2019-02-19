@@ -7,6 +7,7 @@ from Elsasstv.forms import RegisterForm, UserForm
 from .models import Movie, Person
 from .views import detail, home, person
 from accounts.views import profile, settings
+from accounts.models import UserCustom, Friendship
 
 
 class TestMoviesUrls(SimpleTestCase):
@@ -60,16 +61,19 @@ class TestAccountViews(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.create_user(username='test', first_name='test', last_name='test', email='test@test.com', password="Test123456")
+        self.user1 = User.objects.create_user(id='1',username='test1', first_name='test', last_name='test', email='test@test.com', password="Test123456")
+        self.user2 = User.objects.create_user(id='2',username='test2', first_name='test', last_name='test', email='test@test.com', password="Test123456")
+        self.user_custom_1 = UserCustom.objects.create(id=self.user1.id, user=self.user1)
+        self.user_custom_2 = UserCustom.objects.create(id=self.user2.id, user=self.user2)
 
     def test_profile_GET(self):
-        self.client.login(username='test', password='Test123456')
+        self.client.login(username='test1', password='Test123456')
         response = self.client.get(reverse('accounts:profile'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'accounts/profile.html')
 
     def test_settings_GET(self):
-        self.client.login(username='test', password='Test123456')
+        self.client.login(username='test1', password='Test123456')
         response = self.client.get(reverse('accounts:settings'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'accounts/settings.html')
@@ -128,6 +132,10 @@ class MovieTest(TestCase):
 
     def setUp(self):       
         self.matrix = Movie.objects.create(id=603, title="Matrix")
+        self.user1 = User.objects.create_user(id='1',username='test1', first_name='test', last_name='test', email='test@test.com', password="Test123456")
+        self.user2 = User.objects.create_user(id='2',username='test2', first_name='test', last_name='test', email='test@test.com', password="Test123456")
+        self.user_custom_1 = UserCustom.objects.create(id=self.user1.id, user=self.user1)
+        self.user_custom_2 = UserCustom.objects.create(id=self.user2.id, user=self.user2)
         self.user = User.objects.create_user(username='testuser', password='12345')
 
     def test_home_view(self):
@@ -151,9 +159,9 @@ class MovieTest(TestCase):
         self.assertTrue(m)
         
     def test_login_logout(self):
-        self.client.login(username='testuser', password='12345')
+        self.client.login(username='test1', password='Test123456')
         response = self.client.get(reverse('movies:home'))
-        self.assertTrue('<div id="header-username">Hi, testuser</div>' in str(response.content))
+        self.assertTrue('<div id="header-username">Hi, test1</div>' in str(response.content))
         self.client.logout()
         response = self.client.get(reverse('movies:home'))
         self.assertFalse('<div id="header-username">Hi, testuser</div>' in str(response.content))
