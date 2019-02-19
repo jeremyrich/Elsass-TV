@@ -213,7 +213,7 @@
 														{% endif%}
 
 														{% for user in search%}
-														<a href="" class="a-friend">{{ user.username }}{{user.id}}</a>
+														<a href="{% url 'accounts:friend_infos' user.id %}" class="a-friend">{{ user.username }}</a>
 														{% endfor %}
 
 												</div>
