@@ -12,7 +12,7 @@ def get_friends(user):
 		#Getting the source friends
 		for friendship in Friendship.objects.filter(Q(target_user_id=current_user.usercustom.id) & Q(status=1)):
 			friends.append(friendship.source_user.user)	
-	return friends
+	return set(friends) # To avoid getting the same friend due to unsymmetrical friendships
 
 def get_notif(user):
 	"""Function taking a user as argument and returning the list of his/her in waiting friendships requests"""
