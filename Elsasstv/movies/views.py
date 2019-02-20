@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from movies.models import Movie, Person
 from movies.APIClient import APIClient
 from accounts.get_friends import get_notif
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -43,3 +45,17 @@ def person(request, person_id):
         nb_requests = len(friend_requests)        
     return render(request, 'movies/person-detail.html', locals())
 
+def create_favorite(request, movie_id):
+    """allows the user to add a favorite"""
+    movie = Movie.objects.get(pk=movie_id)
+    current_user = request.user
+    movie.users.add(current_user)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def remove_favorite(request, movie_id):
+    """allows the user to remove a favorite"""
+    movie = Movie.objects.get(pk=movie_id)
+    user = request.user 
+    movie.users.remove(user)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

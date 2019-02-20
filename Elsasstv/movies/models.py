@@ -1,4 +1,7 @@
-from django.db import models
+from django.db import models 
+# from accounts.models import UserCustom
+from django.contrib.auth.models import User
+
 
 class Movie(models.Model):
 
@@ -19,6 +22,7 @@ class Movie(models.Model):
     revenue = models.BigIntegerField(null=True)   
     vote_average = models.FloatField(null=True)
     vote_count = models.IntegerField(null=True)
+    users = models.ManyToManyField(User)
     
     
 class Person(models.Model):
@@ -34,7 +38,6 @@ class Person(models.Model):
     biography = models.TextField(null=True) 
     popularity = models.FloatField(null=True) 
     profile_path = models.CharField(max_length=200,null=True)
-
-    
+ 
 
     
