@@ -17,7 +17,7 @@ from movies.models import Movie, Person
 def profile(request):
     """View rendering the details informations of a user"""
     current_user = request.user
-    popular_movies = Movie.objects.order_by('-popularity')[:10]
+    #favorite_movies = current_user.movie_set.all()
 
     #Getting the friends
     friends = get_friends(current_user)

@@ -12,7 +12,7 @@ class UserCustom(models.Model):
                 through_fields=("source_user","target_user"),
                 symmetrical=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
+  
 
 class Friendship(models.Model): 
     """Connects custom users through a many to many relationship. The status of the friendship
