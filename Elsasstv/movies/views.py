@@ -4,6 +4,7 @@ from movies.models import Movie, Person
 from movies.APIClient import APIClient
 from accounts.get_friends import get_notif
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -47,14 +48,14 @@ def person(request, person_id):
 def create_favorite(request, movie_id):
     """allows the user to add a favorite"""
     movie = Movie.objects.get(pk=movie_id)
-    user = request.user
-    user.users.add(movie)
+    current_user = request.user
+    movie.users.add(current_user)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-# def remove_favorite(request, movie_id):
-#     """allows the user to remove a favorite"""
-#     movie = Movie.objects.get(pk=movie_id)
-#     user = request.user 
-#     movie.users.remove(user)
-#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def remove_favorite(request, movie_id):
+    """allows the user to remove a favorite"""
+    movie = Movie.objects.get(pk=movie_id)
+    user = request.user 
+    movie.users.remove(user)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
