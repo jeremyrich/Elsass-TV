@@ -98,8 +98,8 @@ DATABASES = {'default': {
 							'NAME': 'Elsasstv',
 							'USER': 'root',
 							'PASSWORD' : db_password,
-
-							'PORT': '8889',
+							'HOST' : 'localhost',
+							'PORT': '3306',
 			}} 
 
 
