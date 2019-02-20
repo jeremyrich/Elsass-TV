@@ -88,8 +88,8 @@
 					<div class="progression-studios-slider-more-options">
 						<i class="fas fa-ellipsis-h"></i>
 						<ul>
-							<li><a href="#!">Add to Favorites</a></li>
-							<li><a href="#!">Add to Watchlist</a></li>
+							<li><a href="{% url 'movies:create_favorite' movie.id %}">Add to Favorites</a></li>
+							{% comment %} <li><a href="{% url 'movies:remove_favorite' movie.id %}">Remove from Favorites</a></li> {% endcomment %}
 							<li><a href="#!">Write A Review</a></li>
 						</ul>
 					</div>

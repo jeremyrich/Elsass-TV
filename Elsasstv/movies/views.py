@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from movies.models import Movie, Person, Favorite
+from movies.models import Movie, Person
 from movies.APIClient import APIClient
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from accounts.get_friends import get_notif
+from django.http import HttpResponseRedirect
 
 
 
@@ -46,12 +47,17 @@ def person(request, person_id):
         nb_requests = len(friend_requests)        
     return render(request, 'movies/person-detail.html', locals())
 
-def create_favorite(request, movie, user):
+def create_favorite(request, movie_id):
     """allows the user to add a favorite"""
-    HasFavorite.objects.get_or_create(user = current_user, movie = movie_clicked_on)
-    
+    movie = Movie.objects.get(pk=movie_id)
+    user = request.user
+    user.users.add(movie)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-#def remove_favorite(request, movie_id, person_id):
 
-
-#def view_favorite(request, movie_id, person_id):
+# def remove_favorite(request, movie_id):
+#     """allows the user to remove a favorite"""
+#     movie = Movie.objects.get(pk=movie_id)
+#     user = request.user 
+#     movie.users.remove(user)
+#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

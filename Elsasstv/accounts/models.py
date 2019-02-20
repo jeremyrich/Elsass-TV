@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from movies.models import Movie, Favorite
 
 # Create your models here.
 
@@ -15,8 +14,7 @@ class UserCustom(models.Model):
                 symmetrical=False)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    Favorites = models.ManyToManyField(Movie, through="Favorite")
-
+  
 
 class Friendship(models.Model): 
     """Connects custom users through a many to many relationship. The status of the friendship
