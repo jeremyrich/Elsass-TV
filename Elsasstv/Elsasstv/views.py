@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 
-from movies.models import Movie
 from .forms import RegisterForm, UserForm
+from movies.models import Movie
 from accounts.models import UserCustom
+
 
 def home(request):
     """View rendering the 100th more popular movies. Login and registration are managed from this
@@ -15,7 +16,6 @@ def home(request):
     # Login    
     if request.method == 'POST':
         login_user = UserForm(request.POST)
-
         if login_user.is_valid():
             username = login_user.cleaned_data['username']
             password = login_user.cleaned_data['password']
@@ -35,11 +35,10 @@ def home(request):
             new_password = new_user.cleaned_data.get('password1')           
             user = authenticate(username=new_username, password=new_password)
             login(request, user)
-            new_user_custom = UserCustom(id=user.id, user=user) # Creating a one to one linked custom user to create further friendships
+            new_user_custom = UserCustom(id=user.id, user=user) # Creating a one to one linked custom user to add further friendships
             new_user_custom.save()
             return redirect('movies:home')
     else:
         new_user = RegisterForm()   
    
     return render(request, 'home.html', locals())
-
