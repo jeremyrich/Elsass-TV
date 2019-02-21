@@ -6,7 +6,7 @@ def get_friends(user):
 	current_user = user
 	friends=[]
 	if user.username != 'Elsasstv':
-		#Getting the target friendsf
+		#Getting the target friends
 		for friendship in Friendship.objects.filter(Q(source_user_id=current_user.usercustom.id) & Q(status=1)):
 			friends.append(friendship.target_user.user)
 		#Getting the source friends

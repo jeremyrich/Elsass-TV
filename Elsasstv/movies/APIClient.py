@@ -4,9 +4,8 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 import requests 
 
 
-# To comment!
-
-class APIClient: 
+class APIClient:
+    """ Gets data from the movie db """ 
 
     def __init__(self):
         self.api_key = settings.API_KEY
@@ -21,7 +20,7 @@ class APIClient:
         return response.json()
         
     def get_similar_movies(self, movie_id):
-        """to get similar movies to the page we're on"""
+        """ gets similar movies to the page we're on """
         url = 'https://api.themoviedb.org/3/movie/' + str(movie_id) + '/similar'
         full_url = self.call('GET', url)
         movies = []
@@ -31,10 +30,10 @@ class APIClient:
         return movies
 
     def get_movie_credits(self, movie_id):
-        """to get the actors playing in a movie """
+        """ gets the actors playing in a movie """
         url = 'https://api.themoviedb.org/3/movie/' + str(movie_id) + '/credits'
         full_url = self.call('GET', url)
-        #Getting the cast
+        #Gets the cast
         cast = []
         for actor in full_url['cast']:
             profile_path = str(actor['profile_path'])
@@ -43,11 +42,12 @@ class APIClient:
             else:
                 actor['profile_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + profile_path
             cast.append(actor)
-        #Getting the director
+        #Gets the director
         director = full_url['crew'][0]
         return cast, director
 
     def get_person_credits(self, person_id):
+        """ gets all the informations for the person ID we'll user """
         url = 'https://api.themoviedb.org/3/person/' + str(person_id) + '/movie_credits'
         full_url = self.call('GET', url)
         movie_ids = [movie_id['id'] for movie_id in full_url['cast']]
