@@ -85,14 +85,16 @@
 				
 				<div id="movie-detail-header-pro" style="background-image:url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{movie.backdrop_path}}')">
 					
-					<div class="progression-studios-slider-more-options">
-						<i class="fas fa-ellipsis-h"></i>
-						<ul>
-							<li><a href="{% url 'movies:create_favorite' movie.id %}">Add to Favorites</a></li>
-							<li><a href="{% url 'movies:remove_favorite' movie.id %}">Remove from Favorites</a></li>
-							<li><a href="#!">Write A Review</a></li>
-						</ul>
-					</div>
+					{% if user.is_authenticated%}
+						<div class="progression-studios-slider-more-options">
+							<i class="fas fa-ellipsis-h"></i>
+							<ul>
+								<li><a href="{% url 'movies:create_favorite' movie.id %}">Add to Favorites</a></li>
+								<li><a href="{% url 'movies:remove_favorite' movie.id %}">Remove from Favorites</a></li>
+								<li><a href="#!">Write A Review</a></li>
+							</ul>
+						</div>
+					{% endif%}
 					
 					
 					
