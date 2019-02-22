@@ -8,7 +8,7 @@ Django 2.0 project - Florence Schwartz, Quentin Dufrois, Jérémy Rich
 
 ### Second you need a running [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html "elasticsearch") instance on default port: 9200
 
-### Finally activate the virtual environment and launch the server
+### Finally deploy a new virtualenv and launch the server
 In the terminal:
 
 * Go to the project directory
@@ -18,7 +18,10 @@ cd path/to/project_folder/
 
 * Activate the environment (MacOS/Linux)
 ```
+virtualenv -p python3 djangoenv
+cd path/to/djangoenv
 source djangoenv/bin/activate
+pip3 install -r path/to/requirements.txt
 ```
 
 * Then run the django server
@@ -27,6 +30,8 @@ python3 manage.py runserver
 ```
 
 * Open your web browser and enter the URL displayed in the terminal (http://127.0.0.1:8000/ or http://localhost:8000/).
+
+* Local installation will result in an empty mysql database, if you need a sample database please open an issue. 
 
 
 ## The Application
