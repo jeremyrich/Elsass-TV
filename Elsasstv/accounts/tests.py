@@ -73,4 +73,4 @@ class TestAccountViews(TestCase):
         self.assertEquals(friendship2.status, 2)
   
 
-
+    

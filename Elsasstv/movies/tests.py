@@ -126,3 +126,20 @@ class MovieTest(TestCase):
         self.client.logout()
         response = self.client.get(reverse('movies:home'))
         self.assertFalse('<div id="header-username">Hi, testuser</div>' in str(response.content))
+    
+    def test_add_favorite(self):
+        self.client.login(username='test1', password='Test123456')
+        response = self.client.get(reverse('movies:create_favorite', kwargs={'movie_id': 603}))
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(self.user1.movie_set.get(id=603).id, 603)
+    
+    def test_remove_favorite(self):
+        self.client.login(username='test1', password='Test123456')
+        self.matrix.users.add(self.user1)
+        response = self.client.get(reverse('movies:remove_favorite', kwargs={'movie_id': 603}))
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(len(self.user1.movie_set.all()), 0)
+        
+        
+
+
