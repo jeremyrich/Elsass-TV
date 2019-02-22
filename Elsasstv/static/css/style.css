@@ -21,10 +21,6 @@ body,input,select,textarea{
     min-height: 70vh;
 }
 
-.dashboard-container {
-    min-height: 750px;
-}
-
 
 ul#friends-activity-profiles li img {
     margin-left: 15%;
@@ -574,7 +570,8 @@ main#col-main{
     margin-left:160px
 }
 .dashboard-container{
-    padding:0 50px
+    padding:0 50px;
+	min-height:750px;
 }
 #content-sidebar-pro{
     margin-left:160px;
@@ -1935,7 +1932,7 @@ a.movie-detail-header-play-btn i{
     font-size:13px;
     border-radius:60px;
     border:2px solid #fff;
-    color:#fff
+    color:#d42721
 }
 #movie-detail-header-pro .progression-studios-slider-more-options ul{
     position:absolute;

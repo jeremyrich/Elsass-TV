@@ -15,6 +15,8 @@ from movies.models import Movie, Person
 def profile(request):
     """View rendering the detailed informations of a user"""
     current_user = request.user
+	# getting the popular_movies
+    popular_movies = Movie.objects.order_by('-popularity')[:100]
     # Getting the favorite movies
     favorite_movies = current_user.movie_set.all()
     # Getting the friends
@@ -98,6 +100,8 @@ def friend_infos(request, friend_id):
     """Displays all the informations of a friend"""
     friend = User.objects.get(id=friend_id)
     favorite_movies = friend.movie_set.all()
+    # getting the popular_movies
+    popular_movies = Movie.objects.order_by('-popularity')[:100]
     # Getting the requests for the notifications
     friend_requests = get_notif(request.user) 
     nb_requests = len(friend_requests)
