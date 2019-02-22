@@ -17,8 +17,7 @@
             <link rel="stylesheet" href="{% static 'icons/fontawesome/css/fontawesome-all.min.css' %}">  
             <link rel="stylesheet" href="{% static 'icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css' %}">  
             
-            <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-        
+            <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>       
     
 
         {% block css %}{% endblock %} 
@@ -29,14 +28,12 @@
     </head>
 
 
-    <body id="page-top">
-
-        
+    <body id="page-top">        
 
         {% block body %}
+
         {% include 'header.html' %}
         {% include 'login.html' %}
-
 
     	{% endblock %}
 
@@ -47,6 +44,5 @@
         {% include 'footer.html' %}
 
     </body>
-
 
 </html>

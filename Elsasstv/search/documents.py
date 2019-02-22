@@ -1,6 +1,8 @@
 from django_elasticsearch_dsl import DocType, Index
-from movies.models import Movie
 from django.contrib.auth.models import User
+
+from movies.models import Movie
+
 
 # initiation of movie elasticsearch indexation 
 movie = Index('movie')
@@ -20,16 +22,13 @@ user.settings(
 class MovieDocument(DocType):
     class Meta:
         model = Movie
-
-
         fields = [
             'id',
             'title',
             'original_title',
             'overview',
             'poster_path',
-            'vote_average',
-            
+            'vote_average',           
         ]
 
 # selecting fields to index
@@ -37,8 +36,6 @@ class MovieDocument(DocType):
 class UserDocument(DocType):
     class Meta:
         model = User
-
-
         fields = [
             'id',
             'username',

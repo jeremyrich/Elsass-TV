@@ -14,7 +14,6 @@ def home(request):
     q = request.GET.get('q')
     if q:
         search = MovieDocument.search().query("match", title=q)[:100]
-
         #replace None poster_path
         for i in search:
             if i['poster_path'] == None:
