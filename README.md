@@ -18,7 +18,7 @@ cd path/to/project_folder/
 
 * Activate the environment (MacOS/Linux)
 ```
-source venv/bin/activate
+source djangoenv/bin/activate
 ```
 
 * Then run the django server
