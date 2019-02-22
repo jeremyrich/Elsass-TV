@@ -573,6 +573,10 @@ main#col-main{
     padding:0 50px;
 	min-height:750px;
 }
+.dashboard-container-movie{
+    padding:0 50px;
+}
+
 #content-sidebar-pro{
     margin-left:160px;
     width:300px;
