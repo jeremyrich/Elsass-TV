@@ -47,7 +47,7 @@ class APIClient:
         return cast, director
 
     def get_person_credits(self, person_id):
-        """ gets all the informations for the person ID we'll user """
+        """ gets all the informations for the person ID we'll use """
         url = 'https://api.themoviedb.org/3/person/' + str(person_id) + '/movie_credits'
         full_url = self.call('GET', url)
         movie_ids = [movie_id['id'] for movie_id in full_url['cast']]

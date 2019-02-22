@@ -103,19 +103,16 @@ class MovieTest(TestCase):
         self.user = User.objects.create_user(username='testuser', password='12345')
 
     def test_home_view(self):
-        """ Tests if the request to home page sends a response 200""" 
         movie = self.matrix       
         response = self.client.get(reverse('movies:home'))        
         self.assertEqual(response.status_code, 200)
 
-    def test_has_response(self):
-        """  testing if the page "detail" gives a correct http response""" 
+    def test_detail_view(self):
         movie = self.matrix       
         response = self.client.get(reverse('movies:detail', kwargs={'movie_id':603}))
         self.assertEqual(response.status_code, 200)
 
     def test_has_movie_title(self):
-        """ test if the page "detail" returns the right movie""" 
         movie = self.matrix       
         response = self.client.get(reverse('movies:detail', kwargs={'movie_id':603}))
         body = str(response.content)

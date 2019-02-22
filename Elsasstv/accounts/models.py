@@ -4,14 +4,13 @@ from django.contrib.auth.models import User
 
 class UserCustom(models.Model):  
     """As the User model is not changeable, this model, connected to User by a one to one relationship
-    allows to create custom user objects, that can be connected to themselves through the
-    Friendship table
+    allows to create custom user objects, that can be connected to themselves through the Friendship table
     """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     friends = models.ManyToManyField("self", 
                 through="Friendship",
                 through_fields=("source_user","target_user"),
                 symmetrical=False)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
   
 
 class Friendship(models.Model): 
