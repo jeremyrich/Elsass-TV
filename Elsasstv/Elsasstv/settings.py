@@ -17,15 +17,14 @@ import json
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Adding an API Key
-with open('Elsasstv/API_KEY.txt') as f:
-    API_KEY = f.read().strip()
+API_KEY = 'ebe018b0565f22bd6ac6a02ed6277774'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('Elsasstv/SECRET_KEY.txt') as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = 'qr9%d1lu&ikxd!uci_jqnoz9ii%y)kt#m6t3_hijexsjmv&8)s'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -90,14 +89,13 @@ WSGI_APPLICATION = 'Elsasstv.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-with open('Elsasstv/SECRET_DB.txt') as f:
-    db_password = f.read().strip()
+
 
 DATABASES = {'default': {
 							'ENGINE': 'django.db.backends.mysql',
 							'NAME': 'Elsasstv',
 							'USER': 'root',
-							'PASSWORD' : db_password,
+							'PASSWORD' : 'password',
 							'HOST' : 'localhost',
 							'PORT': '3306',
 			    },
