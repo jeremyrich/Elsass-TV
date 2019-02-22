@@ -1,10 +1,8 @@
 from django.db import models 
-# from accounts.models import UserCustom
 from django.contrib.auth.models import User
 
 
 class Movie(models.Model):
-
     id = models.IntegerField(primary_key=True)
     imdb_id = models.CharField(max_length=45, null=True)
     original_title = models.CharField(max_length=200)
@@ -22,11 +20,11 @@ class Movie(models.Model):
     revenue = models.BigIntegerField(null=True)   
     vote_average = models.FloatField(null=True)
     vote_count = models.IntegerField(null=True)
-    users = models.ManyToManyField(User)
+
+    users = models.ManyToManyField(User) #Relationship used to add movies in a user 'favorites'
     
     
-class Person(models.Model):
-  
+class Person(models.Model):  
     id = models.IntegerField(primary_key=True)
     imdb_id = models.CharField(max_length=45)
     name = models.CharField(max_length=200)

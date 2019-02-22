@@ -21,6 +21,10 @@ body,input,select,textarea{
     min-height: 70vh;
 }
 
+.dashboard-container {
+    min-height: 750px;
+}
+
 
 ul#friends-activity-profiles li img {
     margin-left: 15%;

@@ -1,16 +1,42 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, SimpleTestCase
 from accounts.models import UserCustom, Friendship
+from accounts.views import profile, settings
+
 from django.contrib.auth.models import User
 from django.urls import reverse, resolve
 
 
-class TestViews(TestCase):
+class TestAccountUrls(SimpleTestCase):
+
+    def test_profile_url(self):
+        url = reverse('accounts:profile')
+        self.assertEquals(resolve(url).func, profile)
+
+    def test_settings_url(self):
+        url = reverse('accounts:settings')
+        self.assertEquals(resolve(url).func, settings)
+
+
+class TestAccountViews(TestCase):
+
     def setUp(self):
         self.client = Client()
         self.user1 = User.objects.create_user(id='1',username='test1', first_name='test', last_name='test', email='test@test.com', password="Test123456")
         self.user2 = User.objects.create_user(id='2',username='test2', first_name='test', last_name='test', email='test@test.com', password="Test123456")
         self.user_custom_1 = UserCustom.objects.create(id=self.user1.id, user=self.user1)
         self.user_custom_2 = UserCustom.objects.create(id=self.user2.id, user=self.user2)
+    
+    def test_profile_GET(self):
+        self.client.login(username='test1', password='Test123456')
+        response = self.client.get(reverse('accounts:profile'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'accounts/profile.html')
+
+    def test_settings_GET(self):
+        self.client.login(username='test1', password='Test123456')
+        response = self.client.get(reverse('accounts:settings'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'accounts/settings.html')
     
     def test_friend_request(self):
         self.client.login(username='test1', password='Test123456')
@@ -45,6 +71,6 @@ class TestViews(TestCase):
         friendship2 = Friendship.objects.get(source_user=self.user_custom_2, target_user=self.user_custom_1)
         self.assertEquals(friendship1.status, 2)
         self.assertEquals(friendship2.status, 2)
-    
+  
 
 

@@ -7,46 +7,32 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from accounts.get_friends import get_notif, get_friends
 from accounts.models import UserCustom, Friendship
-
 from search.documents import UserDocument
 from movies.models import Movie, Person
 
 
 @login_required
 def profile(request):
-    """View rendering the details informations of a user"""
+    """View rendering the detailed informations of a user"""
     current_user = request.user
     popular_movies = Movie.objects.order_by('-popularity')[:10]
+    # Getting the favorite movies
     favorite_movies = current_user.movie_set.all()
-
-    #Getting the friends
+    # Getting the friends
     friends = get_friends(current_user)
     nb_friends = len(friends)
     friend_ids = [friend.id for friend in friends]
     other_users = User.objects.exclude(Q(id=request.user.id) | Q(id=1)) 
-    
     # Getting the requests for the notifications
     friend_requests = get_notif(request.user) 
     nb_requests = len(friend_requests)
-
-    #search bar for username
+    # Search bar for username
     u = request.GET.get('u')
     if u:
         search = UserDocument.search().query("match", username=u)[:100]
-
     else:
         search = ''
-
     return render(request, 'accounts/profile.html', locals())
-
-@login_required
-def settings(request):
-    """Displays all informations of the current user + modifications forms"""
-    # Getting the requests for the notifications
-    friend_requests = get_notif(request.user) 
-    nb_requests = len(friend_requests)
-
-    return render(request, 'accounts/settings.html', locals())
 
 @login_required
 def list_users(request):
@@ -90,7 +76,7 @@ def delete_friend(request, friend_id):
     """Deletes a friend by looking for the corresponding relationship(s) and setting its status to 2"""
     friend = User.objects.get(id=friend_id)
     current_user = request.user 
-    #Friendship where the current_user is the target   
+    # Friendship where the current_user is the target   
     try:
         friendship1 = Friendship.objects.get(source_user=friend.usercustom, target_user=current_user.usercustom, status=1)
         if friendship1:
@@ -98,7 +84,7 @@ def delete_friend(request, friend_id):
             friendship1.save()
     except ObjectDoesNotExist:
         pass
-    #Friendship where the current_user is the source
+    # Friendship where the current_user is the source
     try:
         friendship2 = Friendship.objects.get(source_user=current_user.usercustom, target_user=friend.usercustom, status=1)    
         if friendship2:
@@ -119,4 +105,10 @@ def friend_infos(request, friend_id):
     nb_requests = len(friend_requests)
     return render(request, 'accounts/friend_infos.html', locals())     
 
-
+@login_required
+def settings(request):
+    """Displays all informations of the current user + modifications forms"""
+    # Getting the requests for the notifications
+    friend_requests = get_notif(request.user) 
+    nb_requests = len(friend_requests)
+    return render(request, 'accounts/settings.html', locals())

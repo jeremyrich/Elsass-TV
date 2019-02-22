@@ -14,9 +14,18 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+        fields = (
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'password1',
+            'password2', 
+        )
+        
 
 class UserForm(forms.Form):
+    """Class used for the authentification of users"""
     username = forms.CharField(max_length=40)
     password = forms.CharField(max_length=20, widget=forms.PasswordInput)
 

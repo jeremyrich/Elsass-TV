@@ -2,15 +2,16 @@ from django.test import TestCase, SimpleTestCase, Client
 from django.contrib.auth.models import User
 from django.urls import reverse, resolve
 
-import re 
 from Elsasstv.forms import RegisterForm, UserForm
 from .models import Movie, Person
 from .views import detail, home, person
-from accounts.views import profile, settings
 from accounts.models import UserCustom, Friendship
+
+import re 
 
 
 class TestMoviesUrls(SimpleTestCase):
+
     def test_home_url(self):
         url = reverse('movies:home')
         self.assertEquals(resolve(url).func, home)
@@ -28,7 +29,6 @@ class TestMoviesViews(TestCase):
 
     def setUp(self):
         self.client = Client()
-
         Movie.objects.create(id='603', original_title='test', title='test', tagline='test', overview='overview', status='test', original_language='test')
         Person.objects.create(id='135651', imdb_id='1', name='test', gender='1')
 
@@ -47,48 +47,16 @@ class TestMoviesViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'movies/person-detail.html')
 
-class TestAccountUrls(SimpleTestCase):
-    def test_profile_url(self):
-        url = reverse('accounts:profile')
-        self.assertEquals(resolve(url).func, profile)
-
-    def test_settings_url(self):
-        url = reverse('accounts:settings')
-        self.assertEquals(resolve(url).func, settings)
-
-
-class TestAccountViews(TestCase):
-
-    def setUp(self):
-        self.client = Client()
-        self.user1 = User.objects.create_user(id='1',username='test1', first_name='test', last_name='test', email='test@test.com', password="Test123456")
-        self.user2 = User.objects.create_user(id='2',username='test2', first_name='test', last_name='test', email='test@test.com', password="Test123456")
-        self.user_custom_1 = UserCustom.objects.create(id=self.user1.id, user=self.user1)
-        self.user_custom_2 = UserCustom.objects.create(id=self.user2.id, user=self.user2)
-
-    def test_profile_GET(self):
-        self.client.login(username='test1', password='Test123456')
-        response = self.client.get(reverse('accounts:profile'))
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'accounts/profile.html')
-
-    def test_settings_GET(self):
-        self.client.login(username='test1', password='Test123456')
-        response = self.client.get(reverse('accounts:settings'))
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'accounts/settings.html')
-
 
 class Setup_Class(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(username='test', first_name='test', last_name='test', email='test@test.com', password="Test123456")
 
+
 class TestForms(TestCase):
 
-
     def test_Registerform_Valid(self):
-
         form = RegisterForm(data={
             'username' : 'test', 
             'first_name' : 'test', 
@@ -97,12 +65,10 @@ class TestForms(TestCase):
             'password1' : 'Test123456', 
             'password2' : 'Test123456',
         })
-
         self.assertTrue(form.is_valid())
 
 
     def test_Registerform_invalid(self):
-
         form = RegisterForm(data={
             'username' : '', 
             'first_name' : '', 
@@ -111,22 +77,20 @@ class TestForms(TestCase):
             'password1' : '', 
             'password2' : '',
         })
-
         self.assertFalse(form.is_valid())
 
     def test_Loginform_valid(self):
         form = UserForm(data={
             'username' : 'test', 
             'password' : 'Test123456', })
-
         self.assertTrue(form.is_valid())
 
     def test_Loginform_invalid(self):
         form = UserForm(data={
             'username' : '', 
             'password' : '', })
-
         self.assertFalse(form.is_valid())
+
 
 class MovieTest(TestCase):
 
@@ -139,19 +103,16 @@ class MovieTest(TestCase):
         self.user = User.objects.create_user(username='testuser', password='12345')
 
     def test_home_view(self):
-        """ Tests if the request to home page sends a response 200""" 
         movie = self.matrix       
         response = self.client.get(reverse('movies:home'))        
         self.assertEqual(response.status_code, 200)
 
-    def test_has_response(self):
-        """  testing if the page "detail" gives a correct http response""" 
+    def test_detail_view(self):
         movie = self.matrix       
         response = self.client.get(reverse('movies:detail', kwargs={'movie_id':603}))
         self.assertEqual(response.status_code, 200)
 
     def test_has_movie_title(self):
-        """ test if the page "detail" returns the right movie""" 
         movie = self.matrix       
         response = self.client.get(reverse('movies:detail', kwargs={'movie_id':603}))
         body = str(response.content)

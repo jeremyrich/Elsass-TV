@@ -20,7 +20,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 with open('Elsasstv/API_KEY.txt') as f:
     API_KEY = f.read().strip()
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -93,6 +92,7 @@ WSGI_APPLICATION = 'Elsasstv.wsgi.application'
 
 with open('Elsasstv/SECRET_DB.txt') as f:
     db_password = f.read().strip()
+
 DATABASES = {'default': {
 							'ENGINE': 'django.db.backends.mysql',
 							'NAME': 'Elsasstv',
@@ -100,7 +100,8 @@ DATABASES = {'default': {
 							'PASSWORD' : db_password,
 							'HOST' : 'localhost',
 							'PORT': '3306',
-			}} 
+			    },
+            } 
 
 
 
@@ -150,4 +151,5 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = "/movies"
+
 LOGOUT_REDIRECT_URL = "/"
