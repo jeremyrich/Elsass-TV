@@ -24,7 +24,7 @@ API_KEY = 'ebe018b0565f22bd6ac6a02ed6277774'
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4vc9)hzpz4$nw-m2+(-4s^jrm9esamub4v=j*@y4hkpqa43fmw'
+SECRET_KEY = ''
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'Elsasstv.wsgi.application'
 DATABASES = {'default': {
 							'ENGINE': 'django.db.backends.mysql',
 							'NAME': 'Elsasstv',
-							'USER': 'mymy',
-							'PASSWORD' : 'maman246',
+							'USER': 'root',
+							'PASSWORD' : 'password',
 							'HOST' : 'localhost',
 							'PORT': '3306',
 			    },
@@ -157,6 +157,6 @@ EMAIL_HOST = 'mail.gmx.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'elsass-tv@gmx.fr'
-EMAIL_HOST_PASSWORD = '!Mymy_crypto_68_rj!'
+EMAIL_HOST_PASSWORD = 'password'
 DEFAULT_FROM_EMAIL = 'Elsass-tv Team <elsass-tv@gmx.fr>'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
