@@ -2,6 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 
+
 import Elsasstv.views as views
 
 urlpatterns = [
@@ -11,6 +12,7 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('movies/', include('movies.urls')),
     path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('search/', include('search.urls')),
         
 ]

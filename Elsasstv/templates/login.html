@@ -34,15 +34,15 @@
                     </div>
                     <div class="container-fluid">
                         <div class="row no-gutters">
-                            <div class="col checkbox-remember-pro"><input type="checkbox" id="checkbox-remember"><label for="checkbox-remember" class="col-form-label">Remember me</label></div>
-                           <div class="col forgot-your-password"><a href="#">Forgot your password?</a></div>
+                            {% comment %} <div class="col checkbox-remember-pro"><input type="checkbox" id="checkbox-remember"><label for="checkbox-remember" class="col-form-label">Remember me</label></div> {% endcomment %}
+                           <div class="col forgot-your-password"><a href="{% url 'password_reset' %}">Forgot your password?</a></div>
                        </div>
                    </div>  
        
                 </form>
       </div>  
 
-    <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#RegisterModal" role="button">Register</button>   
+        <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#RegisterModal" role="button">Register</button>   
    </div>  
  </div>  
 </div>  

@@ -24,7 +24,7 @@ API_KEY = 'ebe018b0565f22bd6ac6a02ed6277774'
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'qr9%d1lu&ikxd!uci_jqnoz9ii%y)kt#m6t3_hijexsjmv&8)s'
+SECRET_KEY = ''
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -151,3 +151,12 @@ STATICFILES_DIRS = (
 LOGIN_REDIRECT_URL = "/movies"
 
 LOGOUT_REDIRECT_URL = "/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.gmx.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'elsass-tv@gmx.fr'
+EMAIL_HOST_PASSWORD = 'password'
+DEFAULT_FROM_EMAIL = 'Elsass-tv Team <elsass-tv@gmx.fr>'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")

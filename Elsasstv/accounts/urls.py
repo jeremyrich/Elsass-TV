@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
+
 import accounts.views as views
 
 
@@ -15,5 +16,6 @@ urlpatterns = [
     path('<int:friendship_id>/<int:status>/accept_or_refuse', views.accept_or_refuse, name='accept_or_refuse'),
     path('<int:friend_id>/delete_friend', views.delete_friend, name='delete_friend'),
     path('<int:friend_id>/friend_infos', views.friend_infos, name='friend_infos'),
+    
 
 ]
