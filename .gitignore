@@ -57,6 +57,7 @@ local_settings.py
 db.sqlite3
 SECRET_KEY.txt
 SECRET_DB.txt
+settings.py
 
 # Flask stuff:
 instance/
